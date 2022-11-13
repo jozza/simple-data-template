@@ -251,12 +251,12 @@ function render_item_row(id) {
     return row
 }
 
-function render_crf() {
-    removeAllChildNodes(crf_view)
+function render_form() {
+    removeAllChildNodes(form_view)
     collected_data = {}
     removeAllChildNodes(example_data)
-    let crf = get_crf_from_localstorage(select_form.value)
-    for (const [grp,items] of Object.entries(crf)) {
+    let form = get_form_from_localstorage(select_form.value)
+    for (const [grp,items] of Object.entries(form)) {
         let table = document.createElement("table")
         let thead = document.createElement("thead")
         let tbody = document.createElement("tbody")
@@ -266,6 +266,6 @@ function render_crf() {
         }
         table.appendChild(thead)
         table.appendChild(tbody)
-        crf_view.appendChild(table)
+        form_view.appendChild(table)
     }
 }

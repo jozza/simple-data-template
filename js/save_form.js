@@ -1,7 +1,7 @@
 function get_test_result() {
     let matrix = []
     // let matrix = {}
-    let els = crf_view.querySelectorAll('[data-a="test-result"]')
+    let els = form_view.querySelectorAll('[data-a="test-result"]')
     if (els.length === 0)
       return matrix
 
@@ -17,10 +17,10 @@ function get_test_result() {
     }
     return matrix
 }
-function get_crf_multi_result() {
+function get_form_multi_result() {
     let matrix = []
     // let matrix = {}
-    let els = crf_view.querySelectorAll('[data-a="multi-response-result"]')
+    let els = form_view.querySelectorAll('[data-a="multi-response-result"]')
     if (els.length === 0)
       return matrix
 
@@ -44,9 +44,9 @@ function get_crf_multi_result() {
     return matrix
 }
 
-function save_crf_to_localstorage() {
+function save_form_to_localstorage() {
     const tests = get_test_result()
-    const multi = get_crf_multi_result()
+    const multi = get_form_multi_result()
     tests.push(...multi)
     const table = o_matrix_to_table(tests)
     removeAllChildNodes(example_data)
@@ -57,7 +57,7 @@ function set_test_result(template, value) {
     template.result.collected = value
 }
 
-function resolve_crf_references() {
+function resolve_form_references() {
     // Add references
     const terms = current_terms.terms
     let matrix = []
@@ -82,7 +82,7 @@ function resolve_crf_references() {
 
 function load_forms() {
     removeAllChildNodes(select_form)
-    for (const form of Object.keys(current_crfs)) {
+    for (const form of Object.keys(current_forms)) {
         const option = document.createElement("option")
         option.value = form
         option.textContent = form

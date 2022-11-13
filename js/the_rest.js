@@ -52,8 +52,8 @@ function add_template_to_protocol(el,update_div) {
     cell.innerHTML = the_template[1].protocol_text
   }
   tr.append(cell)
-  current_crfs['Protocol']['group1'].push({item:the_template[0]})
-  localStorage.setItem('crf',JSON.stringify(current_crfs,null,2))
+  current_forms['Protocol']['group1'].push({item:the_template[0]})
+  localStorage.setItem('form',JSON.stringify(current_forms,null,2))
   document.getElementById(update_div).append(tr)
 }
 

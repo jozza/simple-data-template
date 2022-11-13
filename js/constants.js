@@ -23,9 +23,9 @@ let template_data = {}
 let data_templates = JSON.parse(localStorage.getItem("items"))
 let current_templates = JSON.parse(localStorage.getItem("templates"))
 let current_terms = JSON.parse(localStorage.getItem("terms"))
-let current_crfs = JSON.parse(localStorage.getItem("crf"))
-current_crfs['Protocol']['group1'] = []
-localStorage.setItem("crf",JSON.stringify(current_crfs,null,2))
+let current_forms = JSON.parse(localStorage.getItem("form"))
+current_forms['Protocol']['group1'] = []
+localStorage.setItem("form",JSON.stringify(current_forms,null,2))
 let current_protocol = JSON.parse(localStorage.getItem("protocol"))
 let test_template = current_templates.templates.test
 let test_vars_array = Object.keys(test_template)

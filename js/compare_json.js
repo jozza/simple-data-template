@@ -242,12 +242,13 @@ const jsons = {
   "items":[data_templates,default_items_json],
   "templates":[current_templates,default_templates_json],
   "terms":[current_terms,default_terms_json],
-  "crf":[current_crfs,default_crf_json],
+  "form":[current_forms,default_form_json],
   "protocol":[current_protocol,default_protocol_json]
 }
 
 // function compareJsons(a, b) {
 function compareJsons() {
+  console.log(jsons)
   const compare = jsons[select_json_compare.value]
   let aObject = compare[0]
   let bObject = JSON.parse(compare[1])

@@ -26,6 +26,15 @@ function set_localstorage_items(json) {
   localStorage.setItem("items",json)
 }
 
+function reset_to_default_json_if_first_time() {
+  localStorage.setItem("onefile",default_onefile_json)
+  set_localstorage_items(default_items_json)
+  localStorage.setItem("terms",default_terms_json)
+  localStorage.setItem("templates",default_templates_json)
+  localStorage.setItem("form",default_form_json)
+  localStorage.setItem("protocol",default_protocol_json)
+}
+
 
 async function reset_to_default_json() {
   if (confirm("This will overwrite any changes made to the json files")) {
@@ -33,7 +42,7 @@ async function reset_to_default_json() {
     set_localstorage_items(default_items_json)
     localStorage.setItem("terms",default_terms_json)
     localStorage.setItem("templates",default_templates_json)
-    localStorage.setItem("crf",default_crf_json)
+    localStorage.setItem("form",default_form_json)
     localStorage.setItem("protocol",default_protocol_json)
   }
 }
@@ -62,8 +71,8 @@ function get_dt_from_localstorage() {
   return data_templates
 }
 
-function get_crf_from_localstorage(name) {
-  let current_form = current_crfs[name]
+function get_form_from_localstorage(name) {
+  let current_form = current_forms[name]
   return current_form
 }
 

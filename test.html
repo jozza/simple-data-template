@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row">
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="items_tab" onclick="show_tab(event, 'items')">items</button>
-                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="crf_tab" onclick="show_tab(event, 'crf')">Forms</button>
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="form_tab" onclick="show_tab(event, 'form')">Forms</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="protocol_tab" onclick="show_tab(event, 'protocol')">Protocol</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="json_tab" onclick="show_tab(event, 'json')">json</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="other_tab" onclick="show_tab(event, 'other')">Other</button>
@@ -78,33 +78,33 @@
     </div>
 
     <!-- ---------------------------------------------------------- -->
-    <!-- Tab: crf -->
-    <div class="tabcontent" id="crf">
+    <!-- Tab: form -->
+    <div class="tabcontent" id="form">
         <!-- tab -->
-        <div class="container border  overflow-auto" id="crf_header">
+        <div class="container border  overflow-auto" id="form_header">
             <div class="row">
                 <div class="col-1">Form</div>
                 <div class="col-2">
                     <select name="" id="select_form"></select>
                 </div>
                 <div class="col-2">
-                    <button class="btn col btn-primary btn-sm" onclick="render_crf()">Render</button>
-                    <button class="btn col btn-primary btn-sm" onclick="toggle_view(crf_content)">Hide</button>
+                    <button class="btn col btn-primary btn-sm" onclick="render_form()">Render</button>
+                    <button class="btn col btn-primary btn-sm" onclick="toggle_view(form_content)">Hide</button>
                 </div>
             </div>
         </div>
-        <div class="container border  overflow-auto" id="crf_content">
-            <div class="container border  overflow-auto" id="crf_view">View</div>
+        <div class="container border  overflow-auto" id="form_content">
+            <div class="container border  overflow-auto" id="form_view">View</div>
         </div>
         <div class="container border  overflow-auto" id="example_view">
             <span class="col-1">Collected view</span>
-            <button class="btn btn-primary btn-sm" onclick="save_crf_to_localstorage()">Save Collected</button>
+            <button class="btn btn-primary btn-sm" onclick="save_form_to_localstorage()">Save Collected</button>
             <button class="btn col btn-light btn-sm" onclick="toggle_view(example_data)">Hide</button>
         </div>
         <div class="container border  overflow-auto" id="example_data">Data</div>
         <div class="container border  overflow-auto" id="example_json">
             <span class="col-1">References resolved</span>
-            <button class="btn btn-primary btn-sm" onclick="resolve_crf_references()">Resolve</button>
+            <button class="btn btn-primary btn-sm" onclick="resolve_form_references()">Resolve</button>
             <button class="btn col btn-light btn-sm" onclick="toggle_view(template_data_view)">Hide</button>
         </div>
         <div class="container border  overflow-auto" id="template_container">
@@ -128,7 +128,7 @@
             <option value="items">Items</option>
             <option value="terms">Terms</option>
             <option value="templates">Templates</option>
-            <option value="crf">Forms</option>
+            <option value="form">Forms</option>
             <option value="protocol">Protocol</option>
         </select>
         <button class="btn btn-primary btn-sm" onclick="save_json_to_localstorage()">Save</button>
@@ -146,7 +146,7 @@
             <button class="btn btn-primary btn-sm" onclick="compareJsons()">Compare json</button>
             <select id="select_json_compare">
                 <option value="items">Items</option>
-                <option value="crf">Forms</option>
+                <option value="form">Forms</option>
                 <option value="terms">Terms</option>
                 <option value="templates">Templates</option>
                 <option value="protocol">Protocol</option>
@@ -173,10 +173,10 @@
 <script src="./js/constants.js"></script>
 <script src="./js/to_html.js"></script>
 <script src="./js/the_rest.js"></script>
-<script src="./js/render_crf.js"></script>
+<script src="./js/render_form.js"></script>
 <script src="./js/render_sdtm.js"></script>
 <script src="./js/items.js"></script>
-<script src="./js/save_crf.js"></script>
+<script src="./js/save_form.js"></script>
 <script src="./lib/bootstrap.bundle.js"></script>
 <script src="./js/compare_json.js"></script>
 </html>

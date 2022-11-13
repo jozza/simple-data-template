@@ -161,7 +161,7 @@ const default_items_json = `
     }
 }
 `
-const default_crf_json = `
+const default_form_json = `
 {
   "Form 1": {
     "group1":[
@@ -425,7 +425,7 @@ const default_onefile_json = `
         "protocol_text": "Self reported Race of Subjects"
     }
 },
-"crf":{
+"form":{
   "Form 1": {
     "group1":[
       {"item":"EXAMPLE-TEMPLATE"},
