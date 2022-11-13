@@ -1,6 +1,12 @@
 "use strict"
 
 function init() {
+  // Check if browser has been used (i.e. localStorage should have the terms defined)
+  if (localStorage.terms) {
+    console.log("Initialising browser usage for the first run")
+    reset_to_default_json_if_first_time()
+  }
+
   let last_tab = localStorage.last_tab
   hide_tabs()
   if (last_tab) {
