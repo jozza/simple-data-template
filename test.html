@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- A simple HTML file to hold the structure of the content -->
+    <meta charset="UTF-8">
+    <title>Simple Data Template</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <link rel="stylesheet" href="./css/the.css">
+    <!-- To avoid favicon error -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+    <div class="tab">
+        <div class="container-fluid">
+            <div class="row">
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="items_tab" onclick="show_tab(event, 'items')">items</button>
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="crf_tab" onclick="show_tab(event, 'crf')">Forms</button>
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="protocol_tab" onclick="show_tab(event, 'protocol')">Protocol</button>
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="json_tab" onclick="show_tab(event, 'json')">json</button>
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="other_tab" onclick="show_tab(event, 'other')">Other</button>
+                <button class="col-sm-1 btn btn-light btn-sm" id="annotation-button" data-displayed="none" onclick="toggle_annotation(this)">Annotations</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: json -->
+    <div class="tabcontent" id="protocol">
+        <div class="container row border  overflow-auto">
+            <div class="col-10 border">
+                <h1>A Clinical Investigation Evaluating Efficacy of Perfect Drug® everywhere</h1>
+                <h5>Primary Investigator: Jane Doe</h5>
+                 <h5>Study title: STUDY001</h5>
+                <h5>Study ID: PILOT01</h5>
+                <h5>6.3 Trial Objectives and Purpose</h5>
+                <p>The purpose of this trial is to collect safety and efficacy assessments.</p>
+                <h5>6.4 Trial Design</h5>
+                <h3 >6.7 Assessment of Efficacy</h3>
+                    <p>Efficacy in this study was assessed using:</p>
+                    <table id="efficacy"></table>
+                    <button class="col btn btn-primary btn-sm" onclick="show_modal_with_action('efficacy','efficacy','')">Add</button>
+                <h3>6.8 Assessment of Safety</h3>
+                    <!-- <button class="col btn btn-primary btn-sm" onclick="show_modal_with_action('efficacy','safety','')">Add</button> -->
+                    <table id="safety"></table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: items -->
+    <div class="tabcontent" id="items">
+        <!-- tab -->
+        <!--
+            <div class="container border  overflow-auto" id="items_header">Header</div>
+        -->
+        <div class="container row border  overflow-auto">
+            <div class="row border overflow-auto">
+                <div class="col-sm-3 border  overflow-auto"><b>Items</b></div>
+                <div class="col border  overflow-auto"><b>View</b></div>
+            </div>
+            <div class="row border  overflow-auto">
+                <div class="col-sm-3 border  overflow-auto" id="item_list">list</div>
+                <div class="col border  overflow-auto" id="item_view"></div>
+            </div>
+            <!-- <div class="row border"> -->
+            <div class="row border align-items-start">
+                <div class="col-sm-2 border  overflow-auto" id="item_name"></div>
+                <div class="col-sm-9 border  overflow-auto">
+                    <textarea id="item_json_view" style="font-size: 10pt" rows=20 cols=100>Empty</textarea>
+                </div>
+                <button class="col btn btn-primary btn-sm" id="save_dt" onclick="save_dt_to_localstorage()">Save</button>
+            </div>
+        </div>
+        <!-- 
+            <div class="container border  overflow-auto" id="items_footer">Footer</div>
+         -->
+    </div>
+
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: crf -->
+    <div class="tabcontent" id="crf">
+        <!-- tab -->
+        <div class="container border  overflow-auto" id="crf_header">
+            <div class="row">
+                <div class="col-1">Form</div>
+                <div class="col-2">
+                    <select name="" id="select_form"></select>
+                </div>
+                <div class="col-2">
+                    <button class="btn col btn-primary btn-sm" onclick="render_crf()">Render</button>
+                    <button class="btn col btn-primary btn-sm" onclick="toggle_view(crf_content)">Hide</button>
+                </div>
+            </div>
+        </div>
+        <div class="container border  overflow-auto" id="crf_content">
+            <div class="container border  overflow-auto" id="crf_view">View</div>
+        </div>
+        <div class="container border  overflow-auto" id="example_view">
+            <span class="col-1">Collected view</span>
+            <button class="btn btn-primary btn-sm" onclick="save_crf_to_localstorage()">Save Collected</button>
+            <button class="btn col btn-light btn-sm" onclick="toggle_view(example_data)">Hide</button>
+        </div>
+        <div class="container border  overflow-auto" id="example_data">Data</div>
+        <div class="container border  overflow-auto" id="example_json">
+            <span class="col-1">References resolved</span>
+            <button class="btn btn-primary btn-sm" onclick="resolve_crf_references()">Resolve</button>
+            <button class="btn col btn-light btn-sm" onclick="toggle_view(template_data_view)">Hide</button>
+        </div>
+        <div class="container border  overflow-auto" id="template_container">
+            <textarea id="template_data_view" style="font-size: 10pt" rows=10 cols=100>Empty</textarea>
+        </div>
+        <div class="container border  overflow-auto" id="sdtm_container">
+            <span class="col-1">SDTM view</span>
+            <button class="btn btn-primary btn-sm" onclick="render_sdtm()">Make SDTM</button>
+            <button class="btn col btn-light btn-sm" onclick="toggle_view(sdtm_data_view)">Hide</button>
+        </div>
+        <div class="container border  overflow-auto" id="sdtm_data_view">Data</div>
+        <div class="container border  overflow-auto">---</div>
+    </div>
+
+
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: json -->
+    <div class="tabcontent" id="json">
+        <!-- tab -->
+        <select id="select_json_file">
+            <option value="items">Items</option>
+            <option value="terms">Terms</option>
+            <option value="templates">Templates</option>
+            <option value="crf">Forms</option>
+            <option value="protocol">Protocol</option>
+        </select>
+        <button class="btn btn-primary btn-sm" onclick="save_json_to_localstorage()">Save</button>
+        <button class="btn btn-primary btn-sm" onclick="reset_to_default_json()">Reset json files</button>
+        <div id="list_content">
+            <textarea id="json_txt" rows=40 cols=200>none</textarea>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: other -->
+    
+    <div class="tabcontent" id="other">
+        <div class="container border">
+            <button class="btn btn-primary btn-sm" onclick="compareJsons()">Compare json</button>
+            <select id="select_json_compare">
+                <option value="items">Items</option>
+                <option value="crf">Forms</option>
+                <option value="terms">Terms</option>
+                <option value="templates">Templates</option>
+                <option value="protocol">Protocol</option>
+             </select>
+        </div>
+        <div class="container border  overflow-auto" id="json_compare"></div>
+    </div>
+     
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal_content"></div>
+        </div>
+    </div>
+
+
+</body>
+<!-- <script src="./lib/require-2-3-6.js"></script> -->
+<script src="./js/default_json_files.js"></script>
+<script src="./js/sdtm_metadata.js"></script>
+<script src="./js/utility.js"></script>
+<script src="./js/constants.js"></script>
+<script src="./js/to_html.js"></script>
+<script src="./js/the_rest.js"></script>
+<script src="./js/render_crf.js"></script>
+<script src="./js/render_sdtm.js"></script>
+<script src="./js/items.js"></script>
+<script src="./js/save_crf.js"></script>
+<script src="./lib/bootstrap.bundle.js"></script>
+<script src="./js/compare_json.js"></script>
+</html>
