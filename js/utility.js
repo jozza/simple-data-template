@@ -2,7 +2,6 @@
 
 function init() {
   // Check if browser has been used (i.e. localStorage should have the terms defined)
-  console.log("localStorage.terms",localStorage.terms)
   if (localStorage.terms === undefined) {
     console.log("Initialising browser usage for the first run")
     reset_to_default_json_if_first_time()
