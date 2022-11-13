@@ -75,7 +75,7 @@ function get_submission_terms(variable,terms) {
     } else if (mappings.length === 1) {
         submission_values.push([variable,mappings[0][1]])
     } else {
-        submission_values.push([variable,"MULTLIPLE"]) 
+        submission_values.push([variable,"MULTIPLE"]) 
         i=1
         for (mapping of mappings) {
             submission_values.push([variable+i,mapping[1]])
