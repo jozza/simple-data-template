@@ -235,8 +235,6 @@ function test_to_html(test) {
     // let annotations = current_json.templates.test
     let annotations = current_templates.templates.test
     let row = document.createElement("tr")
-    // let cell = make_cell({txt:test.name,bold:"y",annotation:get_annotation("id"),where:test.submission_value,...test})
-    // console.log("test_to_html test",test.identifier.name)
 
     let cell = make_cell({txt:test.identifier.display,bold:"y",annotation:get_annotation("id"),where:test.identifier.submission_value,...test})
     row.appendChild(cell)
@@ -244,21 +242,18 @@ function test_to_html(test) {
     row.appendChild(cell)
     // if ("unit" in test && test.units.collected) {
     if (test.units && test.units.collected) {
-        // cell = make_cell({txt:"Unit",bold:"y",annotation:get_annotation("unit"),...test})
         cell = make_cell({txt:"Unit",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`unit`,options:get_terms(test.units.collected),annotation:get_annotation("unit"),...test})
         row.appendChild(cell)
     }
     if (test.position) {
-        // cell = make_cell({txt:"Position",bold:"y",annotation:get_annotation("position"),...test})
         cell = make_cell({txt:"Position",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`position`,options:get_terms(test.position),annotation:get_annotation("position"),...test})
         row.appendChild(cell)
     }
     if (test.location) {
-        // cell = make_cell({txt:"Location",bold:"y",annotation:get_annotation("location"),...test})
         cell = make_cell({txt:"Location",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`location`,options:get_terms(test.location),annotation:get_annotation("location"),...test})
