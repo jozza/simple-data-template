@@ -24,15 +24,6 @@ function init() {
   get_json_keys_localstorage()
 }
 
-
-// function set_localStorage(name) {
-//   const jsondata = await fetch(`./data_template/default_${name}.json`)
-//   .then(response => {
-//      return response.json()
-//   })
-//   localStorage.setItem(name,JSON.stringify(jsondata,null,2))
-// }
-
 function set_localstorage_items(json) {
   localStorage.setItem("items",json)
 }
