@@ -22,8 +22,8 @@ function add_validation(item) {
 }
 
 function make_cell(item) {
-    // let cell = document.createElement("td")
-    let cell = document.createElement("div")
+    let cell = (item.td) ? document.createElement("td") : document.createElement("div")
+
     cell.classList.add("p-1")
     let text = document.createElement("div")
     if (item.sub)
