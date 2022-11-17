@@ -22,7 +22,9 @@ function add_validation(item) {
 }
 
 function make_cell(item) {
-    let cell = document.createElement("td")
+    // let cell = document.createElement("td")
+    let cell = document.createElement("div")
+    cell.classList.add("p-1")
     let text = document.createElement("div")
     if (item.sub)
         text.innerHTML = `${item.txt} (${item.sub})`
@@ -64,7 +66,8 @@ function validate(el,item) {
 }
 
 function make_input(item) {
-    let cell = document.createElement("td")
+    // let cell = document.createElement("td")
+    let cell = document.createElement("div")
     let input = document.createElement("input")
     if (item.id) {
         input.classList.add(item.id)
@@ -173,7 +176,8 @@ function make_single_response(item) {
 }
 
 function make_select(item) {
-    let cell = document.createElement("td")
+    let cell = document.createElement("div")
+    cell.classList.add("p-1")
     let select = document.createElement("select")
     if (item.id) {
         select.classList.add(item.id)
@@ -230,21 +234,37 @@ function get_annotation(item) {
         return "undefined:"+item
     }
 }
+function get_order(item) {
+    console.log("item",item)
+    console.log("test",current_templates.templates.test)
+    if (item in current_templates.templates.test) {
+        return current_templates.templates.test[item].display_order
+    } else {
+        console.log("Display order not defined ",item)
+        return null
+    }
+}
 
 function test_to_html(test) {
     // let annotations = current_json.templates.test
     let annotations = current_templates.templates.test
-    let row = document.createElement("tr")
+    // let row = document.createElement("tr")
+    let row = document.createElement("div")
+    // let collection = document.createElement("div")
+    row.classList.add("d-flex","flex-row")
 
     let cell = make_cell({txt:test.identifier.display,bold:"y",annotation:get_annotation("id"),where:test.identifier.submission_value,...test})
     row.appendChild(cell)
     cell = make_input({id:test.id,qualifier:`result`,txt:test.identifier.display,annotation:get_annotation("result"),...test})
+    cell.classList.add("p-1","order-5")
+    console.log(cell)
     row.appendChild(cell)
     // if ("unit" in test && test.units.collected) {
     if (test.units && test.units.collected) {
         cell = make_cell({txt:"Unit",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`unit`,options:get_terms(test.units.collected),annotation:get_annotation("unit"),...test})
+        console.log("order",get_order("unit"))
         row.appendChild(cell)
     }
     if (test.position) {
@@ -266,6 +286,7 @@ function test_to_html(test) {
         row.appendChild(cell)
     }
     row.appendChild(cell)
+    console.log(row)
     return row
 }
 
