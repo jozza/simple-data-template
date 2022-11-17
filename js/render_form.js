@@ -11,6 +11,15 @@ function set_annotation(item) {
     annotation.style.backgroundColor = "LightGrey"
     return annotation
 }
+function add_validation(item) {
+    let validation = document.createElement("div")
+    validation.classList.add("validation")
+    validation.classList.add("annotation")
+    // validation.style.display = validation_button.dataset.displayed
+    validation.style.backgroundColor = "Red"
+    // validation.style.display = "block"
+    return validation
+}
 
 function make_cell(item) {
     let cell = document.createElement("td")
@@ -31,18 +40,29 @@ function make_cell(item) {
 }
 
 function validate(el,item) {
-    console.log("el",el)
-    if (el.value < item.result.validation[0] || el.value > item.result.validation[1]) {
-        let res = confirm("Is value OK?")
-        console.log("res",res)
-        if (!res) {
-            console.log("Returning to field")
-            return
-        }
-        console.log("Proceeding with value")
-        // alert("Value has to be between:"+validation)
+    console.log("value",el.value)
+    if (el.value === "") {
+        console.log("Element has '' value")        
+        el.style.backgroundColor = null
+        return
     }
+    if (!el.value) {
+        console.log("Element has NO value")        
+        el.style.backgroundColor = null
+        return
+    }
+    if (el.value < item.result.validation[0] || el.value > item.result.validation[1]) {
+        el.dataset.error = "Range error"
+        // const validation = el.parentNode.getElementsByClassName("validation")
+        // validation[0].innerHTML = "Value outside normal range:"+item.result.validation
+        el.style.backgroundColor = "Yellow"
+    } else {
+        const validation = el.parentNode.getElementsByClassName("validation")
+        validation[0].innerHTML = null
+    }
+    return
 }
+
 function make_input(item) {
     let cell = document.createElement("td")
     let input = document.createElement("input")
@@ -53,16 +73,20 @@ function make_input(item) {
         input.dataset.test = item.identifier.submission_value
         input.dataset.type = item.type
         input.value = 0
+        input.dataset.previous_value = null
         if (item.result.validation) {
             // alert("adding validation")
-            input.onchange = function () { validate(this,item.result.validation); };
+            input.onchange = function () { validate(this,item) };
         }
     }
-    console.log(item.result)
     cell.appendChild(input)
     if (item.annotation != undefined) {
         let annotation = set_annotation(item)
         cell.appendChild(annotation)
+    }
+    if (item.result.validation != undefined) {
+        let validation = add_validation(item)
+        cell.appendChild(validation)
     }
     return cell
 }
@@ -173,7 +197,7 @@ function make_select(item) {
 }
 function single_or_double(map) {
     if (Object.keys(map.options).length > 1) {
-        cell = make_select({id:map.id,qualifier:map.qualifier,options:map.options,...map})
+        cell = make_select({id:map.id,qualifier:map.qualifier,options:map.options,...map})        
     } else {
         cell = make_cell({txt:map.options[Object.keys(map.options)[0]],...map})
     }
