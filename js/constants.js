@@ -27,11 +27,11 @@ let current_terms = JSON.parse(localStorage.getItem("terms"))
 let current_forms = JSON.parse(localStorage.getItem("forms"))
 if (current_forms) {
     current_forms['Protocol']['group1'] = []
+    localStorage.setItem("forms",JSON.stringify(current_forms,null,2))
 } else {
     console.log("current_forms does NOT exist",current_forms)
     current_forms = {}
     current_forms['Protocol'] = {}
     current_forms['Protocol']['group1'] = []
 }
-localStorage.setItem("forms",JSON.stringify(current_forms,null,2))
 let current_protocol = JSON.parse(localStorage.getItem("protocol"))

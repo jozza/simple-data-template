@@ -2,9 +2,14 @@
 
 function init() {
   // Check if browser has been used (i.e. localStorage should have the terms defined)
-  if (localStorage.terms === undefined) {
+  if (localStorage.terms === undefined
+  || localStorage.items === undefined
+  || localStorage.templates === undefined
+  || localStorage.forms === undefined
+  || localStorage.protocol === undefined
+  ) {
     console.log("Initialising browser usage for the first run")
-    reset_to_default_json_if_first_time()
+    reset_to_default_json()
   }
 
   let last_tab = localStorage.last_tab
@@ -43,23 +48,18 @@ function remove_local_storage() {
   }
 }
 
-function reset_to_default_json_if_first_time() {
-  localStorage.setItem("onefile",default_onefile_json)
-  set_localstorage_items(default_items_json)
-  localStorage.setItem("terms",default_terms_json)
-  localStorage.setItem("templates",default_templates_json)
-  localStorage.setItem("forms",default_forms_json)
-  localStorage.setItem("protocol",default_protocol_json)
-}
-
 function reset_to_default_json() {
-  if (confirm("This will overwrite any changes made to the json files")) {
     localStorage.setItem("onefile",default_onefile_json)
     set_localstorage_items(default_items_json)
     localStorage.setItem("terms",default_terms_json)
     localStorage.setItem("templates",default_templates_json)
     localStorage.setItem("forms",default_forms_json)
     localStorage.setItem("protocol",default_protocol_json)
+}
+
+function ask_reset_to_default_json() {
+  if (confirm("This will overwrite any changes made to the json files")) {
+    reset_to_default_json()
   }
 }
 
