@@ -29,6 +29,20 @@ function make_cell(item) {
     }
     return cell
 }
+
+function validate(el,item) {
+    console.log("el",el)
+    if (el.value < item.result.validation[0] || el.value > item.result.validation[1]) {
+        let res = confirm("Is value OK?")
+        console.log("res",res)
+        if (!res) {
+            console.log("Returning to field")
+            return
+        }
+        console.log("Proceeding with value")
+        // alert("Value has to be between:"+validation)
+    }
+}
 function make_input(item) {
     let cell = document.createElement("td")
     let input = document.createElement("input")
@@ -39,7 +53,12 @@ function make_input(item) {
         input.dataset.test = item.identifier.submission_value
         input.dataset.type = item.type
         input.value = 0
+        if (item.result.validation) {
+            // alert("adding validation")
+            input.onchange = function () { validate(this,item.result.validation); };
+        }
     }
+    console.log(item.result)
     cell.appendChild(input)
     if (item.annotation != undefined) {
         let annotation = set_annotation(item)

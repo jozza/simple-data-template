@@ -20,16 +20,27 @@ function init() {
 }
 
 
-async function set_localStorage(name) {
-  const jsondata = await fetch(`./data_template/default_${name}.json`)
-  .then(response => {
-     return response.json()
-  })
-  localStorage.setItem(name,JSON.stringify(jsondata,null,2))
-}
+// function set_localStorage(name) {
+//   const jsondata = await fetch(`./data_template/default_${name}.json`)
+//   .then(response => {
+//      return response.json()
+//   })
+//   localStorage.setItem(name,JSON.stringify(jsondata,null,2))
+// }
 
 function set_localstorage_items(json) {
   localStorage.setItem("items",json)
+}
+
+function remove_local_storage() {
+  if (confirm("This will reset localStorage")) {
+    localStorage.removeItem("onefile")
+    localStorage.removeItem("items")
+    localStorage.removeItem("terms")
+    localStorage.removeItem("templates")
+    localStorage.removeItem("forms")
+    localStorage.removeItem("protocol")
+  }
 }
 
 function reset_to_default_json_if_first_time() {
@@ -37,18 +48,17 @@ function reset_to_default_json_if_first_time() {
   set_localstorage_items(default_items_json)
   localStorage.setItem("terms",default_terms_json)
   localStorage.setItem("templates",default_templates_json)
-  localStorage.setItem("form",default_form_json)
+  localStorage.setItem("forms",default_forms_json)
   localStorage.setItem("protocol",default_protocol_json)
 }
 
-
-async function reset_to_default_json() {
+function reset_to_default_json() {
   if (confirm("This will overwrite any changes made to the json files")) {
     localStorage.setItem("onefile",default_onefile_json)
     set_localstorage_items(default_items_json)
     localStorage.setItem("terms",default_terms_json)
     localStorage.setItem("templates",default_templates_json)
-    localStorage.setItem("form",default_form_json)
+    localStorage.setItem("forms",default_forms_json)
     localStorage.setItem("protocol",default_protocol_json)
   }
 }

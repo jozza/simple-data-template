@@ -19,6 +19,7 @@ const default_items_json = `
         },
         "result": {
             "collected": null,
+            "validation": [80,140],
             "standard": null
         },
         "units": {
@@ -161,7 +162,7 @@ const default_items_json = `
     }
 }
 `
-const default_form_json = `
+const default_forms_json = `
 {
   "Form 1": {
     "group1":[
@@ -284,6 +285,7 @@ const default_onefile_json = `
         },
         "result": {
             "collected": null,
+            "validation": [80,140],
             "standard": null
         },
         "units": {
@@ -425,7 +427,7 @@ const default_onefile_json = `
         "protocol_text": "Self reported Race of Subjects"
     }
 },
-"form":{
+"forms":{
   "Form 1": {
     "group1":[
       {"item":"EXAMPLE-TEMPLATE"},
