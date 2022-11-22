@@ -14,7 +14,6 @@ function set_annotation(item) {
 function add_validation(item) {
     let validation = document.createElement("div")
     validation.classList.add("validation")
-    validation.classList.add("annotation")
     // validation.style.display = validation_button.dataset.displayed
     validation.style.backgroundColor = "Red"
     // validation.style.display = "block"
