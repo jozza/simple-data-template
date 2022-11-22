@@ -242,7 +242,7 @@ const jsons = {
   "items":[data_templates,default_items_json],
   "templates":[current_templates,default_templates_json],
   "terms":[current_terms,default_terms_json],
-  "form":[current_forms,default_form_json],
+  "forms":[current_forms,default_forms_json],
   "protocol":[current_protocol,default_protocol_json]
 }
 
