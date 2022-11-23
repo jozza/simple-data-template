@@ -24,7 +24,8 @@
         </div>
     </div>
 
-    <!-- Tab: json ---------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: json -->
     <div class="tabcontent" id="protocol">
         <div class="container row border  overflow-auto">
             <div class="col-10 border">
@@ -45,7 +46,8 @@
         </div>
     </div>
 
-    <!-- Tab: items ---------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------- -->
+    <!-- Tab: items -->
     <div class="tabcontent" id="items">
         <!-- tab -->
         <!--
@@ -125,12 +127,11 @@
             <option value="items">Items</option>
             <option value="terms">Terms</option>
             <option value="templates">Templates</option>
-            <option value="forms">Forms</option>
+            <option value="form">Forms</option>
             <option value="protocol">Protocol</option>
         </select>
         <button class="btn btn-primary btn-sm" onclick="save_json_to_localstorage()">Save</button>
-        <button class="btn btn-primary btn-sm" onclick="ask_reset_to_default_json()">Reset json files</button>
-        <button class="btn btn-primary btn-sm" onclick="remove_local_storage()">Remove localStorage</button>
+        <button class="btn btn-primary btn-sm" onclick="reset_to_default_json()">Reset json files</button>
         <div id="list_content">
             <textarea id="json_txt" rows=40 cols=200>none</textarea>
         </div>
@@ -144,7 +145,7 @@
             <button class="btn btn-primary btn-sm" onclick="compareJsons()">Compare json</button>
             <select id="select_json_compare">
                 <option value="items">Items</option>
-                <option value="forms">Forms</option>
+                <option value="form">Forms</option>
                 <option value="terms">Terms</option>
                 <option value="templates">Templates</option>
                 <option value="protocol">Protocol</option>

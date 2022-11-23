@@ -19,7 +19,6 @@ const default_items_json = `
         },
         "result": {
             "collected": null,
-            "validation": [80,140],
             "standard": null
         },
         "units": {
@@ -162,7 +161,7 @@ const default_items_json = `
     }
 }
 `
-const default_forms_json = `
+const default_form_json = `
 {
   "Form 1": {
     "group1":[
@@ -205,43 +204,33 @@ const default_templates_json = `
         "test": {
             "id": {
                 "sdtm_target": "--TESTCD"
-                ,"display_order": 2
             },
             "label": {
                 "sdtm_target": "--TEST"
-                ,"display_order": 3
             },
             "cat": {
                 "sdtm_target": "--CAT"
-                ,"display_order": 1
             },
             "result": {
                 "sdtm_target": "--ORRES"
-                ,"display_order": 4
             },
             "unit": {
                 "sdtm_target": "--ORRESU"
-                ,"display_order": 5
             },
             "method": {
                 "sdtm_target": "--METHOD"
-                ,"display_order": 8
             },
             "position": {
                 "sdtm_target": "--POS"
-                ,"display_order": 6
             },
             "laterality": {
                 "sdtm_target": "--LAT"
-                ,"display_order": 9
             },
             "directionality": {
                 "sdtm_target": "--DIR"
-                ,"display_order": 10
             },
             "location": {
                 "sdtm_target": "--LOC"
-                ,"display_order": 7
             }
         }
     }
@@ -295,7 +284,6 @@ const default_onefile_json = `
         },
         "result": {
             "collected": null,
-            "validation": [80,140],
             "standard": null
         },
         "units": {
@@ -437,7 +425,7 @@ const default_onefile_json = `
         "protocol_text": "Self reported Race of Subjects"
     }
 },
-"forms":{
+"form":{
   "Form 1": {
     "group1":[
       {"item":"EXAMPLE-TEMPLATE"},
@@ -478,43 +466,33 @@ const default_onefile_json = `
         "test": {
             "id": {
                 "sdtm_target": "--TESTCD"
-                ,"display_order": 2
             },
             "label": {
                 "sdtm_target": "--TEST"
-                ,"display_order": 3
             },
             "cat": {
                 "sdtm_target": "--CAT"
-                ,"display_order": 1
             },
             "result": {
                 "sdtm_target": "--ORRES"
-                ,"display_order": 4
             },
             "unit": {
                 "sdtm_target": "--ORRESU"
-                ,"display_order": 5
             },
             "method": {
                 "sdtm_target": "--METHOD"
-                ,"display_order": 8
             },
             "position": {
                 "sdtm_target": "--POS"
-                ,"display_order": 6
             },
             "laterality": {
                 "sdtm_target": "--LAT"
-                ,"display_order": 9
             },
             "directionality": {
                 "sdtm_target": "--DIR"
-                ,"display_order": 10
             },
             "location": {
                 "sdtm_target": "--LOC"
-                ,"display_order": 7
             }
         }
     }
