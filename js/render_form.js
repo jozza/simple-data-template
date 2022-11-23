@@ -21,9 +21,8 @@ function add_validation(item) {
 }
 
 function make_cell(item) {
-    let cell = (item.td) ? document.createElement("td") : document.createElement("div")
-
-    cell.classList.add("p-1")
+    // let cell = (item.td) ? document.createElement("td") : document.createElement("div")
+    let cell = document.createElement("td")
     let text = document.createElement("div")
     if (item.sub)
         text.innerHTML = `${item.txt} (${item.sub})`
@@ -65,8 +64,7 @@ function validate(el,item) {
 }
 
 function make_input(item) {
-    // let cell = document.createElement("td")
-    let cell = document.createElement("div")
+    let cell = document.createElement("td")
     let input = document.createElement("input")
     if (item.id) {
         input.classList.add(item.id)
@@ -94,8 +92,6 @@ function make_input(item) {
 }
 
 function make_multi_response(item) {
-    // <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    // console.log(item.result.collected)
     let row = document.createElement("tr")
     let cell = document.createElement("td")
     let span = document.createElement("span")
@@ -133,8 +129,6 @@ function make_multi_response(item) {
     return row
 }
 function make_single_response(item) {
-    // <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    // console.log(item.result.collected)
     let row = document.createElement("tr")
     let cell = document.createElement("td")
     let span = document.createElement("span")
@@ -176,7 +170,6 @@ function make_single_response(item) {
 
 function make_select(item) {
     let cell = document.createElement("div")
-    cell.classList.add("p-1")
     let select = document.createElement("select")
     if (item.id) {
         select.classList.add(item.id)
