@@ -16,6 +16,7 @@ let select_form  = document.getElementById('select_form')
 
 let save_dt = document.getElementById('save_dt')
 
+// Initialise data
 let current_json = {}
 let collected_data = {}
 let collected_matrix = {}
@@ -23,10 +24,14 @@ let template_data = {}
 let data_templates = JSON.parse(localStorage.getItem("items"))
 let current_templates = JSON.parse(localStorage.getItem("templates"))
 let current_terms = JSON.parse(localStorage.getItem("terms"))
-let current_forms = JSON.parse(localStorage.getItem("form"))
-current_forms['Protocol']['group1'] = []
-localStorage.setItem("form",JSON.stringify(current_forms,null,2))
+let current_forms = JSON.parse(localStorage.getItem("forms"))
+if (current_forms) {
+    current_forms['Protocol']['group1'] = []
+    localStorage.setItem("forms",JSON.stringify(current_forms,null,2))
+} else {
+    console.log("current_forms does NOT exist",current_forms)
+    current_forms = {}
+    current_forms['Protocol'] = {}
+    current_forms['Protocol']['group1'] = []
+}
 let current_protocol = JSON.parse(localStorage.getItem("protocol"))
-let test_template = current_templates.templates.test
-let test_vars_array = Object.keys(test_template)
-const test_vars_template = test_vars_array.reduce((a, v) => ({ ...a, [v]: "not set"}), {})

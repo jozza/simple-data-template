@@ -11,9 +11,19 @@ function set_annotation(item) {
     annotation.style.backgroundColor = "LightGrey"
     return annotation
 }
+function add_validation(item) {
+    let validation = document.createElement("div")
+    validation.classList.add("validation")
+    // validation.style.display = validation_button.dataset.displayed
+    validation.style.backgroundColor = "Red"
+    // validation.style.display = "block"
+    return validation
+}
 
 function make_cell(item) {
-    let cell = document.createElement("td")
+    let cell = (item.td) ? document.createElement("td") : document.createElement("div")
+
+    cell.classList.add("p-1")
     let text = document.createElement("div")
     if (item.sub)
         text.innerHTML = `${item.txt} (${item.sub})`
@@ -29,8 +39,34 @@ function make_cell(item) {
     }
     return cell
 }
+
+function validate(el,item) {
+    console.log("value",el.value)
+    if (el.value === "") {
+        console.log("Element has '' value")        
+        el.style.backgroundColor = null
+        return
+    }
+    if (!el.value) {
+        console.log("Element has NO value")        
+        el.style.backgroundColor = null
+        return
+    }
+    if (el.value < item.result.validation[0] || el.value > item.result.validation[1]) {
+        el.dataset.error = "Range error"
+        // const validation = el.parentNode.getElementsByClassName("validation")
+        // validation[0].innerHTML = "Value outside normal range:"+item.result.validation
+        el.style.backgroundColor = "Yellow"
+    } else {
+        const validation = el.parentNode.getElementsByClassName("validation")
+        validation[0].innerHTML = null
+    }
+    return
+}
+
 function make_input(item) {
-    let cell = document.createElement("td")
+    // let cell = document.createElement("td")
+    let cell = document.createElement("div")
     let input = document.createElement("input")
     if (item.id) {
         input.classList.add(item.id)
@@ -39,11 +75,20 @@ function make_input(item) {
         input.dataset.test = item.identifier.submission_value
         input.dataset.type = item.type
         input.value = 0
+        input.dataset.previous_value = null
+        if (item.result.validation) {
+            // alert("adding validation")
+            input.onchange = function () { validate(this,item) };
+        }
     }
     cell.appendChild(input)
     if (item.annotation != undefined) {
         let annotation = set_annotation(item)
         cell.appendChild(annotation)
+    }
+    if (item.result.validation != undefined) {
+        let validation = add_validation(item)
+        cell.appendChild(validation)
     }
     return cell
 }
@@ -130,7 +175,8 @@ function make_single_response(item) {
 }
 
 function make_select(item) {
-    let cell = document.createElement("td")
+    let cell = document.createElement("div")
+    cell.classList.add("p-1")
     let select = document.createElement("select")
     if (item.id) {
         select.classList.add(item.id)
@@ -154,7 +200,7 @@ function make_select(item) {
 }
 function single_or_double(map) {
     if (Object.keys(map.options).length > 1) {
-        cell = make_select({id:map.id,qualifier:map.qualifier,options:map.options,...map})
+        cell = make_select({id:map.id,qualifier:map.qualifier,options:map.options,...map})        
     } else {
         cell = make_cell({txt:map.options[Object.keys(map.options)[0]],...map})
     }
@@ -187,35 +233,46 @@ function get_annotation(item) {
         return "undefined:"+item
     }
 }
+function get_order(item) {
+    console.log("item",item)
+    console.log("test",current_templates.templates.test)
+    if (item in current_templates.templates.test) {
+        return current_templates.templates.test[item].display_order
+    } else {
+        console.log("Display order not defined ",item)
+        return null
+    }
+}
 
 function test_to_html(test) {
     // let annotations = current_json.templates.test
     let annotations = current_templates.templates.test
-    let row = document.createElement("tr")
-    // let cell = make_cell({txt:test.name,bold:"y",annotation:get_annotation("id"),where:test.submission_value,...test})
-    // console.log("test_to_html test",test.identifier.name)
+    // let row = document.createElement("tr")
+    let row = document.createElement("div")
+    // let collection = document.createElement("div")
+    row.classList.add("d-flex","flex-row")
 
     let cell = make_cell({txt:test.identifier.display,bold:"y",annotation:get_annotation("id"),where:test.identifier.submission_value,...test})
     row.appendChild(cell)
     cell = make_input({id:test.id,qualifier:`result`,txt:test.identifier.display,annotation:get_annotation("result"),...test})
+    cell.classList.add("p-1","order-5")
+    console.log(cell)
     row.appendChild(cell)
     // if ("unit" in test && test.units.collected) {
     if (test.units && test.units.collected) {
-        // cell = make_cell({txt:"Unit",bold:"y",annotation:get_annotation("unit"),...test})
         cell = make_cell({txt:"Unit",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`unit`,options:get_terms(test.units.collected),annotation:get_annotation("unit"),...test})
+        console.log("order",get_order("unit"))
         row.appendChild(cell)
     }
     if (test.position) {
-        // cell = make_cell({txt:"Position",bold:"y",annotation:get_annotation("position"),...test})
         cell = make_cell({txt:"Position",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`position`,options:get_terms(test.position),annotation:get_annotation("position"),...test})
         row.appendChild(cell)
     }
     if (test.location) {
-        // cell = make_cell({txt:"Location",bold:"y",annotation:get_annotation("location"),...test})
         cell = make_cell({txt:"Location",bold:"y",...test})
         row.appendChild(cell)
         cell = single_or_double({id:test.id,qualifier:`location`,options:get_terms(test.location),annotation:get_annotation("location"),...test})
@@ -228,6 +285,7 @@ function test_to_html(test) {
         row.appendChild(cell)
     }
     row.appendChild(cell)
+    console.log(row)
     return row
 }
 

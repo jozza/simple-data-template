@@ -39,13 +39,11 @@ function load_items() {
 
     for (const [id,data_template] of Object.entries(data_templates)) {
         let row = document.createElement("tr")
-        // const cell = make_cell({txt:data_template.identifier.name})
-        const cell = make_cell({txt:id})
+        const cell = make_cell({txt:id,td:true})
         cell.title = data_template.identifier.name
         row.appendChild(cell)
         button = make_show_item_button({id:id})
         row.appendChild(button)
-        // console.log(id,data_template)
         tbody.appendChild(row)
     }
     table.appendChild(thead)
