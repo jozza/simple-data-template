@@ -155,8 +155,10 @@ const default_items_json = `
                   "C41260",
                   "C16352",
                   "C41261",
-                  "C41219"
-            ]
+                  "C41219",
+                  "C17649"
+            ],
+            "specification":null
         },
         "protocol_text": "Self reported Race of Subjects"
     }
@@ -258,9 +260,9 @@ const default_terms_json = `
         "C25228":   { "display":"Right",                  "submission_value":{"laterality":"RIGHT"},  "definition":"Being or located on or directed toward the side of the body to the east when facing north."},
         "C32141":   { "display":"Arm",                    "submission_value":{"location":"ARM"},                  "definition":"The portion of the upper extremity between the shoulder and the elbow."},
         "C32974":   { "display":"Leg",                    "submission_value":{"location":"LEG"},                  "definition":"The portion of the lower extremity between the knee and the ankle."},
-        "C33894":   { "display":"Wrist Joint",            "submission_value":{"location":"WRIST JOINT"},          "definition":"A joint between the distal end of the radius and the proximal row of carpal bones. (NCI)"},
-        "C32078":   { "display":"Ankle Joint",            "submission_value":{"location":"ANKLE JOINT"},          "definition":"A gliding joint between the distal ends of the tibia and fibula and the proximal end of the talus. (NCI)"},
-        "C32608":   { "display":"Finger",                 "submission_value":{"location":"FINGER"},               "definition":"Any of the digits of the hand. (NCI)"},
+        "C33894":   { "display":"Wrist Joint",            "submission_value":{"location":"WRIST JOINT"},          "definition":"A joint between the distal end of the radius and the proximal row of carpal bones.", "source":"(NCI)"},
+        "C32078":   { "display":"Ankle Joint",            "submission_value":{"location":"ANKLE JOINT"},          "definition":"A gliding joint between the distal ends of the tibia and fibula and the proximal end of the talus.", "source":"(NCI)"},
+        "C32608":   { "display":"Finger",                 "submission_value":{"location":"FINGER"},               "definition":"Any of the digits of the hand.", "source":"(NCI)"},
         "C26166":   { "display":"Standing",               "submission_value":{"position":"STANDING"},             "definition":"Sponsor specific"},
         "C49670":   { "display":"mmHg",                   "submission_value":{"unit":"mmHg"},                     "definition":"A unit of pressure equal to 0.001316 atmosphere and equal to the pressure indicated by one millimeter rise of mercury in a barometer at the Earth's surface.", "source":"(NCI)"},
         "C49673":   { "display":"beats/min",              "submission_value":{"unit":"beats/min"},           "definition":"The number of heartbeats measured per minute time.", "source":"(NCI)"},
@@ -276,7 +278,8 @@ const default_terms_json = `
         "C41219":  { "display":"Native Hawaiian or Other Pacific Islander","submission_value":{"RACE":"NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"}, "definition":"Denotes a person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands. The term covers particularly people who identify themselves as part-Hawaiian, Native Hawaiian, Guamanian or Chamorro, Carolinian, Samoan, Chuu. (FDA)"},
         "C41261":  { "display":"White", "submission_value":{"RACE":"WHITE"}, "definition":"Denotes a person with European, Middle Eastern, or North African ancestral origin who identifies, or is identified, as White. (FDA)" },
         "C43234":  { "display":"Not Reported","submission_value":{"RACE":"NOT REPORTED"}, "definition":"Not provided or available."},
-        "C17998":  { "display":"Unknown","submission_value":{"RACE":"UNKNOWN"}, "definition":"Not known, not observed, not recorded, or refused. (NCI)"}
+        "C17998":  { "display":"Unknown","submission_value":{"RACE":"UNKNOWN"}, "definition":"Not known, not observed, not recorded, or refused.", "source":"(NCI)"},
+        "C17649":  { "display":"Other","submission_value":{"RACE":"OTHER"}, "definition":"Different than the one(s) previously specified or mentioned.", "source":"(NCI)"}
     }
 }
 `
@@ -431,8 +434,10 @@ const default_onefile_json = `
                   "C41260",
                   "C16352",
                   "C41261",
-                  "C41219"
-            ]
+                  "C41219",
+                  "C17649"
+            ],
+            "specification":null
         },
         "protocol_text": "Self reported Race of Subjects"
     }
@@ -530,9 +535,9 @@ const default_onefile_json = `
         "C25228":   { "display":"Right",                  "submission_value":{"laterality":"RIGHT"},  "definition":"Being or located on or directed toward the side of the body to the east when facing north."},
         "C32141":   { "display":"Arm",                    "submission_value":{"location":"ARM"},                  "definition":"The portion of the upper extremity between the shoulder and the elbow."},
         "C32974":   { "display":"Leg",                    "submission_value":{"location":"LEG"},                  "definition":"The portion of the lower extremity between the knee and the ankle."},
-        "C33894":   { "display":"Wrist Joint",            "submission_value":{"location":"WRIST JOINT"},          "definition":"A joint between the distal end of the radius and the proximal row of carpal bones. (NCI)"},
-        "C32078":   { "display":"Ankle Joint",            "submission_value":{"location":"ANKLE JOINT"},          "definition":"A gliding joint between the distal ends of the tibia and fibula and the proximal end of the talus. (NCI)"},
-        "C32608":   { "display":"Finger",                 "submission_value":{"location":"FINGER"},               "definition":"Any of the digits of the hand. (NCI)"},
+        "C33894":   { "display":"Wrist Joint",            "submission_value":{"location":"WRIST JOINT"},          "definition":"A joint between the distal end of the radius and the proximal row of carpal bones.", "source":"(NCI)"},
+        "C32078":   { "display":"Ankle Joint",            "submission_value":{"location":"ANKLE JOINT"},          "definition":"A gliding joint between the distal ends of the tibia and fibula and the proximal end of the talus.", "source":"(NCI)"},
+        "C32608":   { "display":"Finger",                 "submission_value":{"location":"FINGER"},               "definition":"Any of the digits of the hand.", "source":"(NCI)"},
         "C26166":   { "display":"Standing",               "submission_value":{"position":"STANDING"},             "definition":"Sponsor specific"},
         "C49670":   { "display":"mmHg",                   "submission_value":{"unit":"mmHg"},                     "definition":"A unit of pressure equal to 0.001316 atmosphere and equal to the pressure indicated by one millimeter rise of mercury in a barometer at the Earth's surface.", "source":"(NCI)"},
         "C49673":   { "display":"beats/min",              "submission_value":{"unit":"beats/min"},           "definition":"The number of heartbeats measured per minute time.", "source":"(NCI)"},
@@ -548,7 +553,8 @@ const default_onefile_json = `
         "C41219":  { "display":"Native Hawaiian or Other Pacific Islander","submission_value":{"RACE":"NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"}, "definition":"Denotes a person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands. The term covers particularly people who identify themselves as part-Hawaiian, Native Hawaiian, Guamanian or Chamorro, Carolinian, Samoan, Chuu. (FDA)"},
         "C41261":  { "display":"White", "submission_value":{"RACE":"WHITE"}, "definition":"Denotes a person with European, Middle Eastern, or North African ancestral origin who identifies, or is identified, as White. (FDA)" },
         "C43234":  { "display":"Not Reported","submission_value":{"RACE":"NOT REPORTED"}, "definition":"Not provided or available."},
-        "C17998":  { "display":"Unknown","submission_value":{"RACE":"UNKNOWN"}, "definition":"Not known, not observed, not recorded, or refused. (NCI)"}
+        "C17998":  { "display":"Unknown","submission_value":{"RACE":"UNKNOWN"}, "definition":"Not known, not observed, not recorded, or refused.", "source":"(NCI)"},
+        "C17649":  { "display":"Other","submission_value":{"RACE":"OTHER"}, "definition":"Different than the one(s) previously specified or mentioned.", "source":"(NCI)"}
     }
 }
 }

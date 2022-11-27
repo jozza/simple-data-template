@@ -121,6 +121,11 @@ function make_multi_response(item) {
         }
         div.append(input)
         div.append(label)
+        if (term === "C17649") {
+            let spec = document.createElement("input")
+            spec.dataset.a = "specification"
+            div.append(spec)
+        }
         list_item.append(div)
         list.append(list_item)
     }

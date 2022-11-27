@@ -35,11 +35,18 @@ function get_form_multi_result() {
             checked[el.dataset.id].push(el.value)
         }
     }
+    console.log(els)
 
     // Get checked items
     for (const [k,v] of Object.entries(checked)) {
         matrix.push({id:k,result:v})
         collected_data[k] = {type:"multi-response-result",result:v}
+    }
+    // Get specification
+    let spec = form_view.querySelectorAll('[data-a="specification"]')
+    if (spec) {
+        console.log("spec",spec[0])
+        console.log("spec[0].value",spec[0].value)
     }
     return matrix
 }
