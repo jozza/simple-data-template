@@ -28,7 +28,7 @@ function get_form_multi_result() {
     for (const el of els) { keys.add(el.dataset.id) }
     let checked = {}
     for (const key of keys) { checked[key] = [] }
-
+    console.log("checked",checked)
     // Get checked items
     for (const el of els) {
         if (el.checked === true) {
@@ -36,18 +36,24 @@ function get_form_multi_result() {
         }
     }
     console.log(els)
+    let spec = form_view.querySelectorAll('[data-a="specification"]')
+    console.log("spec.length",spec.length)
 
+    // Get specification if it exist
+    // if (len(spec) !=)
     // Get checked items
     for (const [k,v] of Object.entries(checked)) {
+        console.log("k",k,v)
         matrix.push({id:k,result:v})
         collected_data[k] = {type:"multi-response-result",result:v}
     }
-    // Get specification
-    let spec = form_view.querySelectorAll('[data-a="specification"]')
-    if (spec) {
-        console.log("spec",spec[0])
-        console.log("spec[0].value",spec[0].value)
-    }
+    // if (spec) {
+    //     console.log("spec",spec[0])
+    //     console.log("spec[0].value",spec[0].value)
+    //     matrix.push({id:els[0].dataset.id,specification:spec[0].value})
+
+    // }
+    console.log(matrix)
     return matrix
 }
 

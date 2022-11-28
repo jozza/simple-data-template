@@ -7,9 +7,11 @@ const default_protocol_json = `
 `
 const default_items_json = `
 {
-    "EXAMPLE-TEMPLATE": {
+    "EXAMPLE-TEMPLATE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "SYSBP",
             "domain": "VS",
             "display": "Example template Systolic Blood Pressure, Supine",
@@ -17,30 +19,41 @@ const default_items_json = `
             "submission_value": "SYSBP",
             "cat": "VITAL SIGNS"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
-            "validation": [80,140],
+            "validation":
+            [
+                80,
+                140
+            ],
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49670": "mmHg"
             },
             "standard": "mmHg"
         },
-        "location": [
+        "location":
+        [
             "C32141",
             "C32974",
             "SPONSOR-LOC1"
         ],
-        "position": [
+        "position":
+        [
             "C62167"
         ],
         "protocol_text": "This is an example protocol text for SBP in Supine position."
     },
-    "PULSE-SUPINE": {
+    "PULSE-SUPINE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "PULSE-SUPINE",
             "domain": "VS",
             "display": "Pulse, supine",
@@ -48,25 +61,31 @@ const default_items_json = `
             "submission_value": "PULSE",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49673": "beats/min"
             },
             "standard": "beats/min"
         },
         "locations": null,
-        "position": {
+        "position":
+        {
             "C62167": "Supine"
         },
         "protocol_text": "Pulse Rate in Supine position"
     },
-    "PULSE": {
+    "PULSE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "PULSE",
             "display": "Pulse",
             "domain": "VS",
@@ -74,17 +93,21 @@ const default_items_json = `
             "submission_value": "PULSE",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49673": "beats/min"
             },
             "standard": "beats/min"
         },
-        "location": [
+        "location":
+        [
             "SPONSOR-LOC1",
             "SPONSOR-LOC2",
             "C32141",
@@ -93,15 +116,18 @@ const default_items_json = `
             "C32078",
             "C32608"
         ],
-        "position": [
+        "position":
+        [
             "C62166",
             "C62167"
         ],
         "protocol_text": "Pulse Rate"
     },
-    "SYSBP_SUP": {
+    "SYSBP_SUP":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "SYSBP",
             "display": "Systolic Blood Pressure, Supine",
             "domain": "VS",
@@ -109,19 +135,23 @@ const default_items_json = `
             "submission_value": "SYSBP",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "var_label": "Systolic Blood Pressure, Supine",
             "var_name": "SBPSUP",
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49670": "mmHg"
             },
             "standard": "mmHg"
         },
-        "location": [
+        "location":
+        [
             "SPONSOR-LOC1",
             "SPONSOR-LOC2",
             "C32141",
@@ -130,36 +160,67 @@ const default_items_json = `
             "C32078",
             "C32608"
         ],
-        "position": {
+        "position":
+        {
             "C62167": "Supine"
         },
-        "method": [
+        "method":
+        [
             "METHOD1",
             "METHOD2"
         ],
         "protocol_text": "Systolic Blood Pressure in Supine position"
     },
-    "Race": {
+    "Race":
+    {
         "type": "multi-response",
-        "identifier": {
+        "identifier":
+        {
             "name": "RACE",
             "display": "Race",
             "domain": "DM",
             "label": "Collected race",
             "instruction": "Subject self reports one or many"
         },
-        "result": {
+        "result":
+        {
             "var_name": "RACE",
-            "collected": [
-                  "C41259",
-                  "C41260",
-                  "C16352",
-                  "C41261",
-                  "C41219",
-                  "C17649"
+            "collected":
+            [
+                "C41259",
+                "C41260",
+                "C16352",
+                "C41261",
+                "C41219"
             ],
-            "specification":null
+            "specification": "C17649"
         },
+        "protocol_text": "Self reported Race of Subjects"
+    },
+    "Race2":
+    {
+        "type": "multi-response",
+        "identifier":
+        {
+            "name": "RACE",
+            "display": "Race",
+            "domain": "DM",
+            "label": "Collected race",
+            "instruction": "Subject self reports one or many"
+        },
+        "result":
+        {
+            "var_name": "RACE",
+            "collected":
+            [
+                "C41259",
+                "C41260",
+                "C16352",
+                "C41261",
+                "C41219",
+                "C17649"
+            ]
+       },
         "protocol_text": "Self reported Race of Subjects"
     }
 }
@@ -286,9 +347,11 @@ const default_terms_json = `
 const default_onefile_json = `
 {
 "items":{
-    "EXAMPLE-TEMPLATE": {
+    "EXAMPLE-TEMPLATE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "SYSBP",
             "domain": "VS",
             "display": "Example template Systolic Blood Pressure, Supine",
@@ -296,30 +359,41 @@ const default_onefile_json = `
             "submission_value": "SYSBP",
             "cat": "VITAL SIGNS"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
-            "validation": [80,140],
+            "validation":
+            [
+                80,
+                140
+            ],
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49670": "mmHg"
             },
             "standard": "mmHg"
         },
-        "location": [
+        "location":
+        [
             "C32141",
             "C32974",
             "SPONSOR-LOC1"
         ],
-        "position": [
+        "position":
+        [
             "C62167"
         ],
         "protocol_text": "This is an example protocol text for SBP in Supine position."
     },
-    "PULSE-SUPINE": {
+    "PULSE-SUPINE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "PULSE-SUPINE",
             "domain": "VS",
             "display": "Pulse, supine",
@@ -327,25 +401,31 @@ const default_onefile_json = `
             "submission_value": "PULSE",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49673": "beats/min"
             },
             "standard": "beats/min"
         },
         "locations": null,
-        "position": {
+        "position":
+        {
             "C62167": "Supine"
         },
         "protocol_text": "Pulse Rate in Supine position"
     },
-    "PULSE": {
+    "PULSE":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "PULSE",
             "display": "Pulse",
             "domain": "VS",
@@ -353,17 +433,21 @@ const default_onefile_json = `
             "submission_value": "PULSE",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49673": "beats/min"
             },
             "standard": "beats/min"
         },
-        "location": [
+        "location":
+        [
             "SPONSOR-LOC1",
             "SPONSOR-LOC2",
             "C32141",
@@ -372,15 +456,18 @@ const default_onefile_json = `
             "C32078",
             "C32608"
         ],
-        "position": [
+        "position":
+        [
             "C62166",
             "C62167"
         ],
         "protocol_text": "Pulse Rate"
     },
-    "SYSBP_SUP": {
+    "SYSBP_SUP":
+    {
         "type": "test",
-        "identifier": {
+        "identifier":
+        {
             "name": "SYSBP",
             "display": "Systolic Blood Pressure, Supine",
             "domain": "VS",
@@ -388,19 +475,23 @@ const default_onefile_json = `
             "submission_value": "SYSBP",
             "cat": "PULSE AND BLOOD PRESSURE"
         },
-        "result": {
+        "result":
+        {
             "var_label": "Systolic Blood Pressure, Supine",
             "var_name": "SBPSUP",
             "collected": null,
             "standard": null
         },
-        "units": {
-            "collected": {
+        "units":
+        {
+            "collected":
+            {
                 "C49670": "mmHg"
             },
             "standard": "mmHg"
         },
-        "location": [
+        "location":
+        [
             "SPONSOR-LOC1",
             "SPONSOR-LOC2",
             "C32141",
@@ -409,36 +500,67 @@ const default_onefile_json = `
             "C32078",
             "C32608"
         ],
-        "position": {
+        "position":
+        {
             "C62167": "Supine"
         },
-        "method": [
+        "method":
+        [
             "METHOD1",
             "METHOD2"
         ],
         "protocol_text": "Systolic Blood Pressure in Supine position"
     },
-    "Race": {
+    "Race":
+    {
         "type": "multi-response",
-        "identifier": {
+        "identifier":
+        {
             "name": "RACE",
             "display": "Race",
             "domain": "DM",
             "label": "Collected race",
             "instruction": "Subject self reports one or many"
         },
-        "result": {
+        "result":
+        {
             "var_name": "RACE",
-            "collected": [
-                  "C41259",
-                  "C41260",
-                  "C16352",
-                  "C41261",
-                  "C41219",
-                  "C17649"
+            "collected":
+            [
+                "C41259",
+                "C41260",
+                "C16352",
+                "C41261",
+                "C41219"
             ],
-            "specification":null
+            "specification": "C17649"
         },
+        "protocol_text": "Self reported Race of Subjects"
+    },
+    "Race2":
+    {
+        "type": "multi-response",
+        "identifier":
+        {
+            "name": "RACE",
+            "display": "Race",
+            "domain": "DM",
+            "label": "Collected race",
+            "instruction": "Subject self reports one or many"
+        },
+        "result":
+        {
+            "var_name": "RACE",
+            "collected":
+            [
+                "C41259",
+                "C41260",
+                "C16352",
+                "C41261",
+                "C41219",
+                "C17649"
+            ]
+       },
         "protocol_text": "Self reported Race of Subjects"
     }
 },

@@ -121,18 +121,44 @@ function make_multi_response(item) {
         }
         div.append(input)
         div.append(label)
-        if (term === "C17649") {
-            let spec = document.createElement("input")
-            spec.dataset.a = "specification"
-            div.append(spec)
-        }
+        // if (term === "C17649") {
+        // }
         list_item.append(div)
         list.append(list_item)
+    }
+    if (item.specification) {
+        console.log("item.specification",item.specification)
+        current_term = current_terms.terms[item.specification]
+        console.log("current_term",current_term)
+        let list_item = document.createElement("il")
+        div = document.createElement("div")
+        let input = document.createElement("input")
+        let label = document.createElement("label")
+        input.type="checkbox"
+        input.value=item.specification
+        input.classList.add(item.id)
+        input.dataset.a = "specification-text"
+        label.for = item.id
+        label.innerHTML = current_term ? current_term.display : "not set"
+        div.append(input)
+        div.append(label)
+
+        let spec = document.createElement("input")
+        spec.dataset.a = "specification"
+        spec.dataset.rid = item.id
+        console.log("spec",spec)
+        div.append(spec)
+        // if (term === "C17649") {
+        // }
+        list_item.append(div)
+        list.append(list_item)
+
     }
     cell.appendChild(list)
     row.appendChild(cell)
     return row
 }
+
 function make_single_response(item) {
     let row = document.createElement("tr")
     let cell = document.createElement("td")
@@ -293,7 +319,16 @@ function render_item_row(id) {
             row = test_to_html({id:id,...data_template})
         } else if (data_template.type === "multi-response") {
             // console.log("render multi-response",data_template.identifier.name)
-            row = make_multi_response({id:id,annotation:get_annotation(data_template),...data_template})
+            if (data_template.result.hasOwnProperty("specification")) {
+                row = make_multi_response({id:id
+                                          ,annotation:get_annotation(data_template)
+                                          ,specification:data_template.result.specification
+                                          ,...data_template})
+            } else {
+                row = make_multi_response({id:id
+                                          ,annotation:get_annotation(data_template)
+                                          ,...data_template})
+            }
         } else if (data_template.type === "single-response") {
             row = make_single_response({id:id,annotation:get_annotation(data_template),...data_template})
         }
