@@ -20,10 +20,15 @@ function get_test_result() {
 function get_form_multi_result() {
     let matrix = []
     // let matrix = {}
-    let els = form_view.querySelectorAll('[data-a="multi-response-result"]')
+    // let els = form_view.querySelectorAll('[data-a="multi-response-result"]')
+    let els = form_view.querySelectorAll('[data-a="multi-response"]')
     if (els.length === 0)
       return matrix
 
+    for (const [k,v] of Object.entries(els)) {
+        let responses = form_view.querySelectorAll('[data-a="multi-response-result"]')
+
+    }
     let keys = new Set()
     for (const el of els) { keys.add(el.dataset.id) }
     let checked = {}

@@ -93,6 +93,9 @@ function make_input(item) {
 
 function make_multi_response(item) {
     let row = document.createElement("tr")
+    row.dataset.id = item.id
+    row.dataset.a = "multi-response"
+    console.log("row item",item)
     let cell = document.createElement("td")
     let span = document.createElement("span")
     span.innerHTML = `<strong>${item.identifier.display}</strong> ${item.identifier.instruction}`
@@ -111,32 +114,27 @@ function make_multi_response(item) {
         input.type="checkbox"
         input.value=term
         if (item.id) {
-            input.classList.add(item.id)
+            // input.classList.add(item.id)
             input.dataset.a = "multi-response-result"
-            input.dataset.id = item.id
-            input.dataset.test = item.identifier.submission_value
-            input.dataset.type = item.type
+            // input.dataset.id = item.id
+            // input.dataset.test = item.identifier.submission_value
+            // input.dataset.type = item.type
             label.for = item.id
             label.innerHTML = current_term.display
         }
         div.append(input)
         div.append(label)
-        // if (term === "C17649") {
-        // }
         list_item.append(div)
         list.append(list_item)
     }
     if (item.specification) {
-        console.log("item.specification",item.specification)
         current_term = current_terms.terms[item.specification]
-        console.log("current_term",current_term)
         let list_item = document.createElement("il")
         div = document.createElement("div")
         let input = document.createElement("input")
         let label = document.createElement("label")
         input.type="checkbox"
         input.value=item.specification
-        input.classList.add(item.id)
         input.dataset.a = "specification-text"
         label.for = item.id
         label.innerHTML = current_term ? current_term.display : "not set"
@@ -156,6 +154,7 @@ function make_multi_response(item) {
     }
     cell.appendChild(list)
     row.appendChild(cell)
+    console.log(row)
     return row
 }
 
