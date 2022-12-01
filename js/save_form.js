@@ -19,46 +19,29 @@ function get_test_result() {
 }
 function get_form_multi_result() {
     let matrix = []
-    // let matrix = {}
-    // let els = form_view.querySelectorAll('[data-a="multi-response-result"]')
     let els = form_view.querySelectorAll('[data-a="multi-response"]')
     if (els.length === 0)
       return matrix
 
-    for (const [k,v] of Object.entries(els)) {
-        let responses = form_view.querySelectorAll('[data-a="multi-response-result"]')
+    for (const multi_response of els) {
+        let responses = multi_response.querySelectorAll('[data-a="multi-response-result"]')
+        let checked = []
+        for (const response of responses) {
+            if (response.checked === true) {
+                checked.push(response.value)
+            }
+        }
 
-    }
-    let keys = new Set()
-    for (const el of els) { keys.add(el.dataset.id) }
-    let checked = {}
-    for (const key of keys) { checked[key] = [] }
-    console.log("checked",checked)
-    // Get checked items
-    for (const el of els) {
-        if (el.checked === true) {
-            checked[el.dataset.id].push(el.value)
+        // Get specification, if it exist
+        let spec = multi_response.querySelectorAll('[data-a="specification"]')
+        if (spec.length > 0) {
+            matrix.push({id:multi_response.dataset.id,result:checked,specification:spec[0].value})
+            collected_data[multi_response.dataset.id] = {type:"multi-response-result",result:checked,specification:spec[0].value}
+        } else {
+            matrix.push({id:multi_response.dataset.id,result:checked})
+            collected_data[multi_response.dataset.id] = {type:"multi-response-result",result:checked}
         }
     }
-    console.log(els)
-    let spec = form_view.querySelectorAll('[data-a="specification"]')
-    console.log("spec.length",spec.length)
-
-    // Get specification if it exist
-    // if (len(spec) !=)
-    // Get checked items
-    for (const [k,v] of Object.entries(checked)) {
-        console.log("k",k,v)
-        matrix.push({id:k,result:v})
-        collected_data[k] = {type:"multi-response-result",result:v}
-    }
-    // if (spec) {
-    //     console.log("spec",spec[0])
-    //     console.log("spec[0].value",spec[0].value)
-    //     matrix.push({id:els[0].dataset.id,specification:spec[0].value})
-
-    // }
-    console.log(matrix)
     return matrix
 }
 
@@ -73,6 +56,9 @@ function save_form_to_localstorage() {
 
 function set_test_result(template, value) {
     template.result.collected = value
+}
+function set_result_specification(template, value) {
+    template.result.specification = value
 }
 
 function resolve_form_references() {
@@ -92,6 +78,10 @@ function resolve_form_references() {
             for (const [k,v] of Object.entries(map.values)) {
                 current_data_template[k] = v
             }
+        }
+        // Assign collected specification to template
+        if ("specification" in map) {
+            set_result_specification(current_data_template,map.specification)
         }
         template_data[test] = current_data_template
     }
