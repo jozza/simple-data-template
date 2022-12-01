@@ -96,6 +96,9 @@ function get_domain(item) {
 function get_result(item) {
     return item.result.collected
 }
+function get_specification(item) {
+    return item.result.specification
+}
 function get_result_submission_identifier(item) {
     return item.identifier.submission_value
 }
@@ -159,6 +162,7 @@ function make_test_row(domain,test) {
 }
 
 function make_dm(domain,items) {
+    console.clear()
     let annotations = current_templates.templates.test
     let sdtm_map = make_sdtm_template(domain)
     sdtm_map["STUDYID"] = current_protocol.id
@@ -166,7 +170,17 @@ function make_dm(domain,items) {
     for (item of items) {
         target_var = item.identifier.name
         const results = get_result(item)
+        console.log("results",results)
         const var_terms = get_submission_terms(target_var,results)
+        console.log("var_terms",var_terms)
+        const specification = get_specification(item)
+        if (specification) {
+            console.log("have specification", specification)
+            // sdtm_map[var_term[0]] = var_term[1]
+        } else {
+            console.log("NO specification",specification)
+        }
+        // const specification = get_specification(item)
         for (var_term of var_terms) {
             sdtm_map[var_term[0]] = var_term[1]
         }
