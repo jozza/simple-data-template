@@ -40,7 +40,6 @@ function make_cell(item) {
 }
 
 function validate(el,item) {
-    console.log("value",el.value)
     if (el.value === "") {
         console.log("Element has '' value")        
         el.style.backgroundColor = null
@@ -59,6 +58,7 @@ function validate(el,item) {
     } else {
         const validation = el.parentNode.getElementsByClassName("validation")
         validation[0].innerHTML = null
+        el.style.backgroundColor = "White"
     }
     return
 }
@@ -95,7 +95,6 @@ function make_multi_response(item) {
     let row = document.createElement("tr")
     row.dataset.id = item.id
     row.dataset.a = "multi-response"
-    console.log("row item",item)
     let cell = document.createElement("td")
     let span = document.createElement("span")
     span.innerHTML = `<strong>${item.identifier.display}</strong> ${item.identifier.instruction}`
@@ -144,17 +143,12 @@ function make_multi_response(item) {
         let spec = document.createElement("input")
         spec.dataset.a = "specification"
         spec.dataset.rid = item.id
-        console.log("spec",spec)
         div.append(spec)
-        // if (term === "C17649") {
-        // }
         list_item.append(div)
         list.append(list_item)
-
     }
     cell.appendChild(list)
     row.appendChild(cell)
-    console.log(row)
     return row
 }
 
