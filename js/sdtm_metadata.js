@@ -1,6 +1,12 @@
 const sdtm = {
     RACE : "RACE",
+    RACE_SPECIFICATION : "RACEOTH",
     ETHNIC : "ETHNIC",
+    SDTM_TARGET: {
+        "SPECIFICATION":{
+            "RACE":"RACEOTH"
+        }
+    },
     DM: {
         STUDYID:"",
         DOMAIN:"",
