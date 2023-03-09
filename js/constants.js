@@ -10,6 +10,7 @@ let annotation_button   = document.getElementById('annotation-button');
 let select_json_file    = document.getElementById('select_json_file')
 let select_json_compare = document.getElementById('select_json_compare')
 let json_compare        = document.getElementById('json_compare')
+let form_json_view      = document.getElementById('form_json_view')
 
 select_json_file.onchange = function() { display_json() }
 let select_form  = document.getElementById('select_form')

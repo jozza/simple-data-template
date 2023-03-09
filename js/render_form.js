@@ -334,6 +334,9 @@ function render_form() {
     collected_data = {}
     removeAllChildNodes(example_data)
     let form = get_form_from_localstorage(select_form.value)
+    const k = {}
+    k[select_form.value] = form
+    form_json_view.value = JSON.stringify(k,null,2)
     for (const [grp,items] of Object.entries(form)) {
         let table = document.createElement("table")
         let thead = document.createElement("thead")
