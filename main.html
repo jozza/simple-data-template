@@ -14,6 +14,7 @@
     <div class="tab">
         <div class="container-fluid">
             <div class="row">
+                <button class="col-sm-1 btn btn-light btn-sm tablinks" id="build_tab" onclick="show_tab(event, 'build')">build</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="items_tab" onclick="show_tab(event, 'items')">items</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="protocol_tab" onclick="show_tab(event, 'protocol')">Protocol</button>
                 <button class="col-sm-1 btn btn-light btn-sm tablinks" id="design_tab" onclick="show_tab(event, 'design')">Design</button>
@@ -27,7 +28,7 @@
 
     <!-- Tab: json ---------------------------------------------------------- -->
     <div class="tabcontent" id="protocol">
-        <div class="container row border  overflow-auto">
+        <div class="container row border overflow-auto">
             <div class="col-10 border">
                 <h1>A Clinical Investigation Evaluating Efficacy of Perfect Drug® everywhere</h1>
                 <h5>Primary Investigator: Jane Doe</h5>
@@ -46,39 +47,53 @@
         </div>
     </div>
 
+    <!-- Tab: build ---------------------------------------------------------- -->
+    <div class="tabcontent" id="build">
+        <div class="container row border overflow-auto">
+            <div class="row border overflow-auto">
+                <div class="col-sm-3 border overflow-auto"><b>Build</b></div>
+                <div class="col border overflow-auto"><b>Options</b></div>
+            </div>
+            <div class="row border overflow-auto">
+                <div class="col-sm-3 border overflow-auto" id="build_list">list</div>
+                <div class="col border overflow-auto" id="item_view"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Tab: items ---------------------------------------------------------- -->
     <div class="tabcontent" id="items">
         <!-- tab -->
         <!--
-            <div class="container border  overflow-auto" id="items_header">Header</div>
+            <div class="container border overflow-auto" id="items_header">Header</div>
         -->
-        <div class="container row border  overflow-auto">
+        <div class="container row border overflow-auto">
             <div class="row border overflow-auto">
-                <div class="col-sm-3 border  overflow-auto"><b>Items</b></div>
-                <div class="col border  overflow-auto"><b>View</b></div>
+                <div class="col-sm-3 border overflow-auto"><b>Items</b></div>
+                <div class="col border overflow-auto"><b>View</b></div>
             </div>
-            <div class="row border  overflow-auto">
-                <div class="col-sm-3 border  overflow-auto" id="item_list">list</div>
-                <div class="col border  overflow-auto" id="item_view"></div>
+            <div class="row border overflow-auto">
+                <div class="col-sm-3 border overflow-auto" id="item_list">list</div>
+                <div class="col border overflow-auto" id="item_view"></div>
             </div>
             <!-- <div class="row border"> -->
             <div class="row border align-items-start">
-                <div class="col-sm-2 border  overflow-auto" id="item_name"></div>
-                <div class="col-sm-9 border  overflow-auto">
+                <div class="col-sm-2 border overflow-auto" id="item_name"></div>
+                <div class="col-sm-9 border overflow-auto">
                     <textarea id="item_json_view" style="font-size: 10pt" rows=20 cols=100>Empty</textarea>
                 </div>
                 <button class="col btn btn-primary btn-sm" id="save_dt" onclick="save_dt_to_localstorage()">Save</button>
             </div>
         </div>
         <!-- 
-            <div class="container border  overflow-auto" id="items_footer">Footer</div>
+            <div class="container border overflow-auto" id="items_footer">Footer</div>
          -->
     </div>
 
     <!-- Tab: form -------------->
     <div class="tabcontent" id="form">
         <!-- tab -->
-        <div class="container border  overflow-auto" id="form_header">
+        <div class="container border overflow-auto" id="form_header">
             <div class="row">
                 <div class="col-1">Form</div>
                 <div class="col-2">
@@ -90,58 +105,58 @@
                 </div>
             </div>
         </div>
-        <div class="container border  overflow-auto" id="form_content">
+        <div class="container border overflow-auto" id="form_content">
             <div class="row">
                 <div class="col-9">
-                    <div class="container border  overflow-auto" id="form_view">View</div>
+                    <div class="container border overflow-auto" id="form_view">View</div>
                 </div>
                 <div class="col">
                     <textarea id="form_json_view" style="font-size: 10pt" cols=30>Empty</textarea>
                 </div>
             </div>
         </div>
-        <div class="container border  overflow-auto" id="example_view">
+        <div class="container border overflow-auto" id="example_view">
             <span class="col-1">Collected view</span>
             <button class="btn btn-primary btn-sm" onclick="save_form_to_localstorage()">Save Collected</button>
             <button class="btn col btn-light btn-sm" onclick="toggle_view(example_data)">Hide</button>
         </div>
-        <div class="container border  overflow-auto" id="example_data">Data</div>
-        <div class="container border  overflow-auto" id="example_json">
+        <div class="container border overflow-auto" id="example_data">Data</div>
+        <div class="container border overflow-auto" id="example_json">
             <span class="col-1">References resolved</span>
             <button class="btn btn-primary btn-sm" onclick="resolve_form_references()">Resolve</button>
             <button class="btn col btn-light btn-sm" onclick="toggle_view(template_data_view)">Hide</button>
         </div>
-        <div class="container border  overflow-auto" id="template_container">
+        <div class="container border overflow-auto" id="template_container">
             <textarea id="template_data_view" style="font-size: 10pt" rows=10 cols=100>Empty</textarea>
         </div>
-        <div class="container border  overflow-auto" id="sdtm_container">
+        <div class="container border overflow-auto" id="sdtm_container">
             <span class="col-1">SDTM view</span>
             <button class="btn btn-primary btn-sm" onclick="render_sdtm()">Make SDTM</button>
             <button class="btn col btn-light btn-sm" onclick="toggle_view(sdtm_data_view)">Hide</button>
         </div>
-        <div class="container border  overflow-auto" id="sdtm_data_view">Data</div>
-        <div class="container border  overflow-auto">---</div>
+        <div class="container border overflow-auto" id="sdtm_data_view">Data</div>
+        <div class="container border overflow-auto">---</div>
     </div>
 
     <!-- Tab: design -------------->
     <div class="tabcontent" id="design">
         <!-- tab -->
-        <div class="container border  overflow-auto" id="design_header">
+        <div class="container border overflow-auto" id="design_header">
             <div class="row">
                 <div class="col-1">Design</div>
             </div>
         </div>
-        <div class="container border  overflow-auto" id="design_buttons">
+        <div class="container border overflow-auto" id="design_buttons">
             <button class="btn btn-primary btn-sm" onclick="add_timepoint()">Add timepoint</button>
-            <!-- <div class="container border  overflow-auto" id="design_view">Timepoints</div> -->
+            <!-- <div class="container border overflow-auto" id="design_view">Timepoints</div> -->
         </div>
-        <div class="container border  overflow-auto">
-            <div class="container border  overflow-auto" id="timepoint_view">Timepoints</div>
+        <div class="container border overflow-auto">
+            <div class="container border overflow-auto" id="timepoint_view">Timepoints</div>
         </div>
-        <div class="container border  overflow-auto">
+        <div class="container border overflow-auto">
             <span class="col-1">Design view</span>
         </div>
-        <div class="container border  overflow-auto" id="example_data">Data</div>
+        <div class="container border overflow-auto" id="example_data">Data</div>
     </div>
 
 
@@ -178,7 +193,7 @@
                 <option value="protocol">Protocol</option>
              </select>
         </div>
-        <div class="container border  overflow-auto" id="json_compare"></div>
+        <div class="container border overflow-auto" id="json_compare"></div>
     </div>
      
     <!-- The Modal -->
