@@ -51,11 +51,13 @@
     <div class="tabcontent" id="build">
         <div class="container row border overflow-auto">
             <div class="row border overflow-auto">
-                <div class="col-sm-3 border overflow-auto"><b>Build</b></div>
+                <div class="col-sm-3 border overflow-auto"><b>Build from template</b></div>
                 <div class="col border overflow-auto"><b>Options</b></div>
             </div>
             <div class="row border overflow-auto">
-                <div class="col-sm-3 border overflow-auto" id="build_list">list</div>
+                <div class="col-sm-3 border overflow-auto" id="build_new_item">
+                    <button class="btn btn-primary" id="" onclick="create_findings_item(event, 'build')">Finding</button>
+                </div>
                 <div class="col border overflow-auto" id="item_view"></div>
             </div>
         </div>
@@ -204,7 +206,8 @@
             <div id="modal_content"></div>
         </div>
     </div>
-
+    <p> </p>
+    <p> </p>
 
 </body>
 <!-- <script src="./lib/require-2-3-6.js"></script> -->
@@ -217,6 +220,7 @@
 <script src="./js/render_form.js"></script>
 <script src="./js/render_sdtm.js"></script>
 <script src="./js/items.js"></script>
+<script src="./js/create_items.js"></script>
 <script src="./js/design.js"></script>
 <script src="./js/save_form.js"></script>
 <script src="./lib/bootstrap.bundle.js"></script>
