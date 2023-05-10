@@ -93,6 +93,9 @@ function toggle_annotation(button) {
   let els = document.getElementsByClassName("annotation")
   if (els.length == 0) { return }
 
+  button.classList.toggle("btn-light")
+  button.classList.toggle("btn-info")
+
   if (els[0].style.display == "none") {
     for (let i = 0; i < els.length; i++) { els[i].style.display = "block"; }
     button.dataset.displayed = "block"

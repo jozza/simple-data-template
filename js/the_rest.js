@@ -26,10 +26,10 @@ function show_tab(evt, tab_name, el) {
   tablinks = document.getElementsByClassName("tablinks")
   for (i = 0; i < tablinks.length; i++) {
       // tablinks[i].className = tablinks[i].className.replace(" active", "")
-      tablinks[i].classList.remove("active","btn-primary","btn-light","btn-secondary")
+      tablinks[i].classList.remove("active","btn-primary","btn-light","btn-info")
   }
   // el.classList.add("btn-primary","active")
-  el.classList.add("btn-secondary","active")
+  el.classList.add("btn-info","active")
 
   localStorage.last_tab = tab_name
   // Show the current tab, and add an "active" class to the button that opened the tab

@@ -163,31 +163,6 @@ function make_single_response(item) {
     }
     cell.append(span)
     cell = make_select({id:item.identifier.id,qualifier:map.qualifier,options:item.result.collected,...item})
-
-    // let list = document.createElement("ul")
-    // for (const term of item.result.collected) {
-    //     current_term = current_terms.terms[term]
-    //     let list_item = document.createElement("il")
-    //     div = document.createElement("div")
-    //     let input = document.createElement("input")
-    //     let label = document.createElement("label")
-    //     input.type="checkbox"
-    //     input.value=term
-    //     if (item.id) {
-    //         input.classList.add(item.id)
-    //         input.dataset.a = "single-response-result"
-    //         input.dataset.id = item.id
-    //         input.dataset.test = item.identifier.submission_value
-    //         input.dataset.type = item.type
-    //         label.for = item.id
-    //         label.innerHTML = current_term.display
-    //     }
-    //     div.append(input)
-    //     div.append(label)
-    //     list_item.append(div)
-    //     list.append(list_item)
-    // }
-    // cell.appendChild(list)
     row.appendChild(cell)
     return row
 }
