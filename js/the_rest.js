@@ -15,7 +15,7 @@ function hide_tabs() {
   let tabcontent = document.getElementsByClassName("tabcontent")
   for (let i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
 }
-function show_tab(evt, tab_name) {
+function show_tab(evt, tab_name, el) {
   // Declare all variables
   let i, tabcontent, tablinks
 
@@ -25,8 +25,11 @@ function show_tab(evt, tab_name) {
   // Get all elements with class="tablinks" and remove the class "active"
   tablinks = document.getElementsByClassName("tablinks")
   for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "")
+      // tablinks[i].className = tablinks[i].className.replace(" active", "")
+      tablinks[i].classList.remove("active","btn-primary","btn-light","btn-secondary")
   }
+  // el.classList.add("btn-primary","active")
+  el.classList.add("btn-secondary","active")
 
   localStorage.last_tab = tab_name
   // Show the current tab, and add an "active" class to the button that opened the tab
