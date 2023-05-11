@@ -271,7 +271,7 @@ function test_to_html(test) {
         row.appendChild(cell)
     }
     row.appendChild(cell)
-    console.log(row)
+    // console.log(row)
     return row
 }
 
@@ -321,6 +321,12 @@ function render_form() {
             tbody.appendChild(row)
         }
         table.appendChild(thead)
+        if (tbody.childElementCount === 0) {
+            // <textarea id="form_json_view" style="font-size: 10pt" cols=30>Empty</textarea>
+            let empty = document.createElement("div")
+            empty.innerHTML = "empty"
+            tbody.appendChild(empty)
+        }
         table.appendChild(tbody)
         form_view.appendChild(table)
     }
