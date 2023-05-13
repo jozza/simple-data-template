@@ -170,13 +170,10 @@ function make_dm(domain,items) {
     for (item of items) {
         target_var = item.identifier.name
         const results = get_result(item)
-        console.log("results",results)
         const var_terms = get_submission_terms(target_var,results)
-        console.log("var_terms",var_terms)
         const specification = get_specification(item)
         if (specification) {
-            console.log("have specification", specification)
-            // sdtm_map[var_term[0]] = var_term[1]
+            sdtm_map[target_var+"OTH"] = specification
         } else {
             console.log("NO specification",specification)
         }
