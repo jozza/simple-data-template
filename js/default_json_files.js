@@ -138,7 +138,6 @@ const default_items_json = `
         "result":
         {
             "var_label": "Systolic Blood Pressure, Supine",
-            "var_name": "SBPSUP",
             "collected": null,
             "standard": null
         },
@@ -184,7 +183,6 @@ const default_items_json = `
         },
         "result":
         {
-            "var_name": "RACE",
             "collected":
             [
                 "C41259",
@@ -210,7 +208,6 @@ const default_items_json = `
         },
         "result":
         {
-            "var_name": "RACE",
             "collected":
             [
                 "C41259",
@@ -227,6 +224,11 @@ const default_items_json = `
 `
 const default_forms_json = `
 {
+  "Form Race": {
+    "group1":[
+      {"item":"Race"}
+    ]
+  },
   "Form 1": {
     "group1":[
       {"item":"EXAMPLE-TEMPLATE"},
@@ -261,6 +263,7 @@ const default_forms_json = `
     ]
   }
 }
+
 `
 const default_templates_json = `
 {
@@ -308,7 +311,8 @@ const default_templates_json = `
             }
         }
     }
-}`
+}
+`
 const default_terms_json = `
 {
    "terms":{
@@ -343,9 +347,16 @@ const default_terms_json = `
         "C17649":  { "display":"Other","submission_value":{"RACE":"OTHER"}, "definition":"Different than the one(s) previously specified or mentioned.", "source":"(NCI)"}
     }
 }
+
 `
 const default_onefile_json = `
 {
+"protocol":{
+	"id":"PILOT01",
+	"name":"Study1"
+}
+
+,
 "items":{
     "EXAMPLE-TEMPLATE":
     {
@@ -478,7 +489,6 @@ const default_onefile_json = `
         "result":
         {
             "var_label": "Systolic Blood Pressure, Supine",
-            "var_name": "SBPSUP",
             "collected": null,
             "standard": null
         },
@@ -524,7 +534,6 @@ const default_onefile_json = `
         },
         "result":
         {
-            "var_name": "RACE",
             "collected":
             [
                 "C41259",
@@ -550,7 +559,6 @@ const default_onefile_json = `
         },
         "result":
         {
-            "var_name": "RACE",
             "collected":
             [
                 "C41259",
@@ -563,8 +571,14 @@ const default_onefile_json = `
        },
         "protocol_text": "Self reported Race of Subjects"
     }
-},
+}
+,
 "forms":{
+  "Form Race": {
+    "group1":[
+      {"item":"Race"}
+    ]
+  },
   "Form 1": {
     "group1":[
       {"item":"EXAMPLE-TEMPLATE"},
@@ -599,6 +613,7 @@ const default_onefile_json = `
     ]
   }
 }
+
 ,
 "templates":{
     "templates":{
@@ -645,7 +660,8 @@ const default_onefile_json = `
             }
         }
     }
-},
+}
+,
 "terms":{
    "terms":{
         "SPONSOR-LOC1":    { "display":"Left Arm",        "submission_value":{"location":{"term":"C32141"},"laterality":{"term":"C25229"}},             "definition":"Sponsor specific"},
@@ -679,5 +695,7 @@ const default_onefile_json = `
         "C17649":  { "display":"Other","submission_value":{"RACE":"OTHER"}, "definition":"Different than the one(s) previously specified or mentioned.", "source":"(NCI)"}
     }
 }
+
+
 }
 `
