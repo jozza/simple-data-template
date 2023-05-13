@@ -1,4 +1,4 @@
-const sdtm = {
+const sdtm_metadata = {
     RACE : "RACE",
     RACE_SPECIFICATION : "RACEOTH",
     ETHNIC : "ETHNIC",

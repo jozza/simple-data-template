@@ -16,7 +16,7 @@ function sdtm_cell(item) {
 }
 
 function make_sdtm_template(domain) {
-    return structuredClone(sdtm[domain])
+    return structuredClone(sdtm_metadata[domain])
 }
 
 function get_submission_terms_mapping(terms) {

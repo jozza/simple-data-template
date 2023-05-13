@@ -218,7 +218,7 @@ function get_terms(terms) {
 function get_annotation(item) {
     if (item in current_templates.templates.test) {
         return current_templates.templates.test[item].sdtm_target
-    } else if (sdtm[item.identifier.name] !== undefined)  {
+    } else if (sdtm_metadata[item.identifier.name] !== undefined)  {
         return item.identifier.domain+"."+item.identifier.name
     } else {
         console.log("Error (get_annotation) ",item,"is undefined")
