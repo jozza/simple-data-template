@@ -173,7 +173,8 @@ function make_dm(domain,items) {
         const var_terms = get_submission_terms(target_var,results)
         const specification = get_specification(item)
         if (specification) {
-            sdtm_map[target_var+"OTH"] = specification
+            let supp_var = sdtm_metadata[target_var+"_SPECIFICATION"]
+            sdtm_map[supp_var] = specification
         } else {
             console.log("NO specification",specification)
         }
