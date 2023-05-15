@@ -7,14 +7,14 @@ const default_protocol_json = `
 `
 const default_items_json = `
 {
-    "EXAMPLE-TEMPLATE":
+    "sbp_v1":
     {
         "type": "test",
         "identifier":
         {
             "name": "SYSBP",
             "domain": "VS",
-            "display": "Example template Systolic Blood Pressure, Supine",
+            "display": "Template Systolic Blood Pressure, Supine",
             "label": "Systolic Blood Pressure",
             "submission_value": "SYSBP",
             "cat": "VITAL SIGNS"
@@ -47,9 +47,9 @@ const default_items_json = `
         [
             "C62167"
         ],
-        "protocol_text": "This is an example protocol text for SBP in Supine position."
+        "protocol_text": "This is an example protocol text for SBP in Supine position and sponsor location."
     },
-    "PULSE-SUPINE":
+    "http://cdisc.org/bc/pulse_supine":
     {
         "type": "test",
         "identifier":
@@ -81,7 +81,7 @@ const default_items_json = `
         },
         "protocol_text": "Pulse Rate in Supine position"
     },
-    "PULSE":
+    "http://cdisc.org/bc/pulse_v1":
     {
         "type": "test",
         "identifier":
@@ -123,7 +123,7 @@ const default_items_json = `
         ],
         "protocol_text": "Pulse Rate"
     },
-    "SYSBP_SUP":
+    "http://cdisc.org/bc/sbp_sup":
     {
         "type": "test",
         "identifier":
@@ -170,7 +170,7 @@ const default_items_json = `
         ],
         "protocol_text": "Systolic Blood Pressure in Supine position"
     },
-    "Race":
+    "http://cdisc.org/bc/race_v1":
     {
         "type": "multi-response",
         "identifier":
@@ -179,7 +179,7 @@ const default_items_json = `
             "display": "Race",
             "domain": "DM",
             "label": "Collected race",
-            "instruction": "Subject self reports one or many"
+            "instruction": "Subject self reports one or many and/or specification"
         },
         "result":
         {
@@ -193,9 +193,9 @@ const default_items_json = `
             ],
             "specification": "C17649"
         },
-        "protocol_text": "Self reported Race of Subjects"
+        "protocol_text": "Self reported Race of Subjects with specification"
     },
-    "Race2":
+    "http://cdisc.org/bc/race_v2":
     {
         "type": "multi-response",
         "identifier":
@@ -218,7 +218,7 @@ const default_items_json = `
                 "C17649"
             ]
        },
-        "protocol_text": "Self reported Race of Subjects"
+        "protocol_text": "Self reported Race of Subjects, no specification"
     }
 }
 `
@@ -226,36 +226,36 @@ const default_forms_json = `
 {
   "Form Race": {
     "group1":[
-      {"item":"Race"}
+      {"item":"http://cdisc.org/bc/race_v1"}
     ]
   },
   "Form 1": {
     "group1":[
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"PULSE"},
-      {"item":"Race"}
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/race_v2"}
     ]
   },
   "Form 2": {
     "group1":[
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"PULSE-SUPINE"},
-      {"item":"SYSBP_SUP"}
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"},
+      {"item":"http://cdisc.org/bc/sbp_sup"}
     ]
  },
  "Form 3: pulse 2 variants": {
     "group1":[
-      {"item":"PULSE"},
-      {"item":"PULSE-SUPINE"}
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"}
     ]
  },
  "Form 4:race and vs": {
     "group1":[
-      {"item":"Race"},
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"SYSBP_SUP"},
-      {"item":"PULSE"},
-      {"item":"PULSE-SUPINE"}
+      {"item":"http://cdisc.org/bc/race_v1"},
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/sbp_sup"},
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"}
     ]
   },
  "Protocol": {
@@ -358,14 +358,14 @@ const default_onefile_json = `
 
 ,
 "items":{
-    "EXAMPLE-TEMPLATE":
+    "sbp_v1":
     {
         "type": "test",
         "identifier":
         {
             "name": "SYSBP",
             "domain": "VS",
-            "display": "Example template Systolic Blood Pressure, Supine",
+            "display": "Template Systolic Blood Pressure, Supine",
             "label": "Systolic Blood Pressure",
             "submission_value": "SYSBP",
             "cat": "VITAL SIGNS"
@@ -398,9 +398,9 @@ const default_onefile_json = `
         [
             "C62167"
         ],
-        "protocol_text": "This is an example protocol text for SBP in Supine position."
+        "protocol_text": "This is an example protocol text for SBP in Supine position and sponsor location."
     },
-    "PULSE-SUPINE":
+    "http://cdisc.org/bc/pulse_supine":
     {
         "type": "test",
         "identifier":
@@ -432,7 +432,7 @@ const default_onefile_json = `
         },
         "protocol_text": "Pulse Rate in Supine position"
     },
-    "PULSE":
+    "http://cdisc.org/bc/pulse_v1":
     {
         "type": "test",
         "identifier":
@@ -474,7 +474,7 @@ const default_onefile_json = `
         ],
         "protocol_text": "Pulse Rate"
     },
-    "SYSBP_SUP":
+    "http://cdisc.org/bc/sbp_sup":
     {
         "type": "test",
         "identifier":
@@ -521,7 +521,7 @@ const default_onefile_json = `
         ],
         "protocol_text": "Systolic Blood Pressure in Supine position"
     },
-    "Race":
+    "http://cdisc.org/bc/race_v1":
     {
         "type": "multi-response",
         "identifier":
@@ -530,7 +530,7 @@ const default_onefile_json = `
             "display": "Race",
             "domain": "DM",
             "label": "Collected race",
-            "instruction": "Subject self reports one or many"
+            "instruction": "Subject self reports one or many and/or specification"
         },
         "result":
         {
@@ -544,9 +544,9 @@ const default_onefile_json = `
             ],
             "specification": "C17649"
         },
-        "protocol_text": "Self reported Race of Subjects"
+        "protocol_text": "Self reported Race of Subjects with specification"
     },
-    "Race2":
+    "http://cdisc.org/bc/race_v2":
     {
         "type": "multi-response",
         "identifier":
@@ -569,43 +569,43 @@ const default_onefile_json = `
                 "C17649"
             ]
        },
-        "protocol_text": "Self reported Race of Subjects"
+        "protocol_text": "Self reported Race of Subjects, no specification"
     }
 }
 ,
 "forms":{
   "Form Race": {
     "group1":[
-      {"item":"Race"}
+      {"item":"http://cdisc.org/bc/race_v1"}
     ]
   },
   "Form 1": {
     "group1":[
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"PULSE"},
-      {"item":"Race"}
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/race_v2"}
     ]
   },
   "Form 2": {
     "group1":[
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"PULSE-SUPINE"},
-      {"item":"SYSBP_SUP"}
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"},
+      {"item":"http://cdisc.org/bc/sbp_sup"}
     ]
  },
  "Form 3: pulse 2 variants": {
     "group1":[
-      {"item":"PULSE"},
-      {"item":"PULSE-SUPINE"}
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"}
     ]
  },
  "Form 4:race and vs": {
     "group1":[
-      {"item":"Race"},
-      {"item":"EXAMPLE-TEMPLATE"},
-      {"item":"SYSBP_SUP"},
-      {"item":"PULSE"},
-      {"item":"PULSE-SUPINE"}
+      {"item":"http://cdisc.org/bc/race_v1"},
+      {"item":"sbp_v1"},
+      {"item":"http://cdisc.org/bc/sbp_sup"},
+      {"item":"http://cdisc.org/bc/pulse_v1"},
+      {"item":"http://cdisc.org/bc/pulse_supine"}
     ]
   },
  "Protocol": {
