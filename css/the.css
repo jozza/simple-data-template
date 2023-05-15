@@ -33,10 +33,10 @@ textarea { font-size: 8pt; }
 body {
 	font-size: 0.75rem;
 }
-*//* Create an active/current tablink class */
+/* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
-}
+  background-color: #33CEFF;
+border-color: #ffa8a8; background: #ffd6d6;}
 .weekend {
 	color: grey;
 }

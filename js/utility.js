@@ -16,7 +16,7 @@ function init() {
   hide_tabs()
   if (last_tab) {
     document.getElementById(last_tab).style.display = "block";
-    document.getElementById(last_tab+"_tab").className += " active";
+    document.getElementById(last_tab+"_tab").classList.add("active");
   }
   display_json()
   load_items()
@@ -93,8 +93,7 @@ function toggle_annotation(button) {
   let els = document.getElementsByClassName("annotation")
   if (els.length == 0) { return }
 
-  button.classList.toggle("btn-light")
-  button.classList.toggle("btn-info")
+  button.classList.toggle("btn-success")
 
   if (els[0].style.display == "none") {
     for (let i = 0; i < els.length; i++) { els[i].style.display = "block"; }
